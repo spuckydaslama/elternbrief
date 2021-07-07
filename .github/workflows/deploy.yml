@@ -31,7 +31,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: 'build'
         run: |
-          npm install
+          npm ci
           npm run lint
           npm run build
       - name: Deploy to production
