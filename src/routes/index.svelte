@@ -1,6 +1,7 @@
 <script>
 	import ElternbriefGenerator from '../components/generator/ElternbriefGenerator.svelte';
 </script>
+
 <svelte:head>
 	<title>Elternbrief</title>
 </svelte:head>

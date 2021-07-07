@@ -8,7 +8,7 @@
 	<header>
 		<Header />
 	</header>
-	<main class='flex-grow'>
+	<main class="flex-grow">
 		<slot />
 	</main>
 	<footer>

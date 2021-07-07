@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TextbausteinIntro from './textbausteine/TextbausteinIntro.svelte';
-	let wieviele = 2;
+	let wieviele: 0 | 1 | 2 = 2;
 	let andrede = '<Anrede>';
 </script>
 
@@ -22,7 +22,7 @@
 		<h2 class="text-2xl mb-8">Dein Elternbrief</h2>
 		<div>
 			<p class="text-blue-700">{andrede}</p>
-			<TextbausteinIntro wieviele={wieviele} />
+			<TextbausteinIntro {wieviele} />
 		</div>
 	</div>
 </div>
