@@ -43,3 +43,4 @@ jobs:
           source: 'build/*'
           target: ${{ secrets.SSH_DEPLOY_TARGET }}
           rm: true
+          strip_components: 1
