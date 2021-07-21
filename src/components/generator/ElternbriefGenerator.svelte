@@ -24,8 +24,8 @@
 				<label for="wieviele_einer">An eine Person</label>
 			</div>
 			<div class="m-4">
-				<label class='hidden' for="andrede">Anrede</label>
-				<input class='w-full' type="text" id="andrede" name="anrede" bind:value={andrede} />
+				<label class="hidden" for="andrede">Anrede</label>
+				<input class="w-full" type="text" id="andrede" name="anrede" bind:value={andrede} />
 			</div>
 			<div class="m-4">
 				<div>
@@ -58,7 +58,13 @@
 			</div>
 			<div class="m-4">
 				<label class="hidden" for="andrede">Gruß</label>
-				<input class='w-full' type="text" id="grussformel" name="grussformel" bind:value={grussformel} />
+				<input
+					class="w-full"
+					type="text"
+					id="grussformel"
+					name="grussformel"
+					bind:value={grussformel}
+				/>
 			</div>
 		</form>
 	</div>
