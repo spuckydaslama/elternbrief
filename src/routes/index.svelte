@@ -6,7 +6,7 @@
 	<title>Elternbrief</title>
 </svelte:head>
 
-<h1 class="text-4xl text-center my-8">Willkommen beim Elternbrief-Generator</h1>
+<h1 class="text-4xl text-center my-8">Gib deinem Kind eine Stimme</h1>
 <p>Im Herbst sind Bundestagswahlen. Die Kinder haben wenig Einfluss darauf. Trotzdem geht es zu großen Teilen um ihre Zukunft. Wir wollen ihnen eine Stimme verleihen.</p>
 <ul>
 	<li>Passe die Briefvorlage so an, um im Namen deiner Kinder eine Botschaft an Ältere zu senden.</li>
