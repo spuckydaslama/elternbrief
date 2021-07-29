@@ -13,7 +13,7 @@
 	let bausteinSolaranlage = false;
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-full p-1.5">
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-full p-1.5">
 	<div>
 		<h2 class="text-2xl mb-8">Daten</h2>
 		<form>
@@ -90,4 +90,4 @@
 			<p>{grussformel}</p>
 		</div>
 	</div>
-</div>
+</section>
