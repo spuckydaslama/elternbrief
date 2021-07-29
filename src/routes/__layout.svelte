@@ -6,12 +6,12 @@
 
 <div class="p-8 flex flex-col min-h-screen">
 	<header>
-		<Header />
+		<!--		<Header />-->
 	</header>
 	<main class="flex-grow">
 		<slot />
 	</main>
 	<footer>
-		<Footer />
+		<!--		<Footer />-->
 	</footer>
 </div>
