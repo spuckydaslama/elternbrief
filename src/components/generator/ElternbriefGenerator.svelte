@@ -1,16 +1,23 @@
 <script lang="ts">
-	import Intro from './textbausteine/v1/Intro.svelte';
-	import Kreuzfahrtschiffe from './textbausteine/v1/Kreuzfahrtschiffe.svelte';
-	import Tempolimit from './textbausteine/v1/Tempolimit.svelte';
-	import Solaranlage from './textbausteine/v1/Solaranlage.svelte';
-	import Outro from './textbausteine/v1/Outro.svelte';
+	import type { Wieviele } from './v1/elternbriefTypes';
+	import { createElternbrief } from './v1/elternbrief';
+	import HtmlElternbrief from './v1/HtmlElternbrief.svelte';
 
-	let wieviele: 0 | 1 | 2 = 2;
-	let andrede = 'Liebe Oma, Lieber Opa';
+	let wieviele: Wieviele = 2;
+	let anrede = 'Liebe Oma, Lieber Opa';
 	let grussformel = 'Seid fest umarmt, Euer Enkelkind';
 	let bausteinKreuzfahrt = false;
 	let bausteinTempolimit = true;
 	let bausteinSolaranlage = false;
+
+	$: elternbrief = createElternbrief({
+		wieviele,
+		anrede,
+		grussformel,
+		bausteinKreuzfahrt,
+		bausteinTempolimit,
+		bausteinSolaranlage
+	});
 </script>
 
 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-full p-1.5">
@@ -25,7 +32,7 @@
 			</div>
 			<div class="m-4">
 				<label class="hidden" for="andrede">Anrede</label>
-				<input class="w-full" type="text" id="andrede" name="anrede" bind:value={andrede} />
+				<input class="w-full" type="text" id="andrede" name="anrede" bind:value={anrede} />
 			</div>
 			<div class="m-4">
 				<div>
@@ -71,23 +78,7 @@
 	<div class="lg:col-span-2">
 		<h2 class="text-2xl mb-8">Dein Elternbrief</h2>
 		<div>
-			<p>{andrede}</p>
-			<br />
-			<Intro {wieviele} />
-			<br />
-			{#if bausteinKreuzfahrt}
-				<Kreuzfahrtschiffe />
-			{/if}
-			{#if bausteinTempolimit}
-				<Tempolimit />
-			{/if}
-			{#if bausteinSolaranlage}
-				<Solaranlage />
-			{/if}
-			<br />
-			<Outro {wieviele} />
-			<br />
-			<p>{grussformel}</p>
+			<HtmlElternbrief {elternbrief} />
 		</div>
 	</div>
 </section>
