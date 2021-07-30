@@ -1,7 +1,7 @@
 import type { Elternbrief, ElternbriefInput } from './elternbriefTypes';
 import { BriefNewline, BriefParagraph } from './elternbriefTypes';
 
-export const createElternbrief = (userInput: ElternbriefInput):Elternbrief => {
+export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 	const elternbrief: Elternbrief = [];
 	elternbrief.push(new BriefParagraph(userInput.anrede));
 	elternbrief.push(new BriefNewline());
