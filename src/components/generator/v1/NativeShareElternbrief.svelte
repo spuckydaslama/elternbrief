@@ -5,7 +5,7 @@
 
 	let nativeShare;
 	onMount(async () => {
-		nativeShare = window.navigator.share;
+		nativeShare = window.navigator.share.bind(window.navigator);
 	});
 	export let elternbrief: Elternbrief;
 
