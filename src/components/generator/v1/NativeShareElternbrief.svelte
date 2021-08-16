@@ -9,8 +9,9 @@
 	});
 	export let elternbrief: Elternbrief;
 
+	let somerror;
 	const handleShareAction = async () => {
-		await nativeShare({ text: toSharableText(elternbrief) });
+		nativeShare({ text: toSharableText(elternbrief) }).catch((error) => (somerror = error.message));
 	};
 </script>
 
@@ -21,4 +22,5 @@
 	>
 		Brief teilen
 	</button>
+	<div>{somerror}</div>
 {/if}

@@ -76,7 +76,7 @@ export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 	return elternbrief;
 };
 
-export const toSharableText = (elternbrief: Elternbrief) => {
+export const toSharableText = (elternbrief: Elternbrief): string => {
 	return elternbrief
 		.map((briefelement) => {
 			if (briefelement instanceof BriefParagraph) {
