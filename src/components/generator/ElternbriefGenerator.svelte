@@ -79,10 +79,10 @@
 	</div>
 	<div class="lg:col-span-2">
 		<h2 class="text-2xl mb-4">Dein Elternbrief</h2>
-		<div class='bg-gray-100 p-1.5'>
+		<div class="bg-gray-100 p-1.5">
 			<HtmlElternbrief {elternbrief} />
 		</div>
-		<div class='mt-8 flex'>
+		<div class="mt-8 flex">
 			<NativeShareElternbrief {elternbrief} />
 			<CopyElternbriefButton {elternbrief} />
 		</div>

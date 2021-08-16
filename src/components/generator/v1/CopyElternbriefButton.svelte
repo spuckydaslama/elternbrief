@@ -25,7 +25,7 @@
 >
 	{#if savedToClipboard}
 		<svg
-			in:fly={{x:8}}
+			in:fly={{ x: 8 }}
 			xmlns="http://www.w3.org/2000/svg"
 			class="h-8 w-8"
 			fill="none"
