@@ -82,7 +82,7 @@
 		<div class="bg-gray-100 p-1.5">
 			<HtmlElternbrief {elternbrief} />
 		</div>
-		<div class="mt-8 flex">
+		<div class="mt-8 flex space-x-3">
 			<NativeShareElternbrief {elternbrief} />
 			<CopyElternbriefButton {elternbrief} />
 		</div>
