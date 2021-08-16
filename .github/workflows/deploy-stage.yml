@@ -1,12 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deploy the code
+name: Deploy to Stage
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [main]
+    branches: [develop]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -41,6 +41,6 @@ jobs:
           username: ${{ secrets.SSH_DEPLOY_USER }}
           password: ${{ secrets.SSH_DEPLOY_PW }}
           source: 'build/*'
-          target: ${{ secrets.SSH_DEPLOY_TARGET }}
+          target: ${{ secrets.SSH_DEPLOY_TARGET_STAGE }}
           rm: true
           strip_components: 1
