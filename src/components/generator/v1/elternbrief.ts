@@ -75,3 +75,16 @@ export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 
 	return elternbrief;
 };
+
+export const toSharableText = (elternbrief: Elternbrief): string => {
+	return elternbrief
+		.map((briefelement) => {
+			if (briefelement instanceof BriefParagraph) {
+				return briefelement.text + '\n';
+			}
+			if (briefelement instanceof BriefNewline) {
+				return '\n';
+			}
+		})
+		.join('');
+};

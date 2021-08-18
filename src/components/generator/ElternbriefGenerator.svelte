@@ -2,6 +2,8 @@
 	import type { Wieviele } from './v1/elternbriefTypes';
 	import { createElternbrief } from './v1/elternbrief';
 	import HtmlElternbrief from './v1/HtmlElternbrief.svelte';
+	import NativeShareElternbrief from './v1/NativeShareElternbrief.svelte';
+	import CopyElternbriefButton from './v1/CopyElternbriefButton.svelte';
 
 	let wieviele: Wieviele = 2;
 	let anrede = 'Liebe Oma, Lieber Opa';
@@ -76,9 +78,13 @@
 		</form>
 	</div>
 	<div class="lg:col-span-2">
-		<h2 class="text-2xl mb-8">Dein Elternbrief</h2>
-		<div>
+		<h2 class="text-2xl mb-4">Dein Elternbrief</h2>
+		<div class="bg-gray-100 p-1.5">
 			<HtmlElternbrief {elternbrief} />
+		</div>
+		<div class="mt-8 flex space-x-3">
+			<NativeShareElternbrief {elternbrief} />
+			<CopyElternbriefButton {elternbrief} />
 		</div>
 	</div>
 </section>
