@@ -3,7 +3,7 @@
 		await fetch('/test.php', {
 			method: 'POST',
 			headers: {
- 				Accept: 'application/json',
+				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({ a: 1, b: 'Textual content' })
