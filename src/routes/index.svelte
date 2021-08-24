@@ -12,7 +12,7 @@
 		Im Herbst sind Bundestagswahlen. Die Kinder haben wenig Einfluss darauf. Trotzdem geht es zu
 		großen Teilen um ihre Zukunft. Wir wollen ihnen eine Stimme verleihen.
 	</p>
-	<ul>
+	<ul class="list-disc list-inside">
 		<li>
 			Passe die Briefvorlage so an, um im Namen deiner Kinder eine Botschaft an Ältere zu senden.
 		</li>

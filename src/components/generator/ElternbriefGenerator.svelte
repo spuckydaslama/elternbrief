@@ -24,13 +24,17 @@
 
 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-full p-1.5">
 	<div>
-		<h2 class="text-2xl mb-8">Daten</h2>
+		<h2 class="text-2xl mb-8">Deine Anpassungen</h2>
 		<form>
-			<div class="m-4">
-				<input type="radio" bind:group={wieviele} id="wieviele_mehrere" name="wieviele" value={2} />
-				<label for="wieviele_einer">An mehrere Personen</label>
-				<input type="radio" bind:group={wieviele} id="wieviele_einer" name="wieviele" value={1} />
-				<label for="wieviele_einer">An eine Person</label>
+			<div class="m-4 flex flex-col md:flex-row md:space-x-3">
+				<label>
+					<input type="radio" bind:group={wieviele} name="wieviele" value={2} />
+					An mehrere Personen
+				</label>
+				<label>
+					<input type="radio" bind:group={wieviele} name="wieviele" value={1} />
+					An eine Person
+				</label>
 			</div>
 			<div class="m-4">
 				<label class="hidden" for="andrede">Anrede</label>
@@ -78,7 +82,7 @@
 		</form>
 	</div>
 	<div class="lg:col-span-2">
-		<h2 class="text-2xl mb-4">Dein Elternbrief</h2>
+		<h2 class="text-2xl mb-4">Der fertige Elternbrief</h2>
 		<div class="bg-gray-100 p-1.5">
 			<HtmlElternbrief {elternbrief} />
 		</div>
