@@ -1,4 +1,4 @@
 <?php
 $file = 'log.txt';
-file_put_contents($file, var_dump($_POST), FILE_APPEND | LOCK_EX);
+file_put_contents($file, 'Content', FILE_APPEND | LOCK_EX);
 ?>
