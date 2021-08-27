@@ -45,7 +45,7 @@
 			plz_ort = '';
 
 			formularGeoffnet = false;
-			setTimeout(() => postkarteVersendet = true, 500);
+			setTimeout(() => (postkarteVersendet = true), 500);
 		}
 	};
 </script>
