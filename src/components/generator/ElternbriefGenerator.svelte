@@ -4,6 +4,7 @@
 	import HtmlElternbrief from './v1/HtmlElternbrief.svelte';
 	import NativeShareElternbrief from './v1/NativeShareElternbrief.svelte';
 	import CopyElternbriefButton from './v1/CopyElternbriefButton.svelte';
+	import PostkarteVersenden from './v1/PostkarteVersenden.svelte';
 
 	let wieviele: Wieviele = 2;
 	let anrede = 'Liebe Oma, Lieber Opa';
@@ -86,9 +87,14 @@
 		<div class="bg-gray-100 p-1.5">
 			<HtmlElternbrief {elternbrief} />
 		</div>
-		<div class="mt-8 flex space-x-3">
-			<NativeShareElternbrief {elternbrief} />
-			<CopyElternbriefButton {elternbrief} />
+		<div class="mt-8 flex flex-col space-y-2">
+			<div class="flex flex-col sm:flex-row sm:space-x-2 sm:space-y-0 space-y-2">
+				<NativeShareElternbrief {elternbrief} />
+				<CopyElternbriefButton {elternbrief} />
+			</div>
+			<div>
+				<PostkarteVersenden {elternbrief} />
+			</div>
 		</div>
 	</div>
 </section>
