@@ -1,9 +1,6 @@
 <script lang="ts">
-	import type { Elternbrief } from './elternbriefTypes';
 	import { slide, fade } from 'svelte/transition';
-	import { toSharableText } from './elternbrief';
-
-	export let elternbrief: Elternbrief;
+	import { elternbriefText } from '$lib/stores';
 
 	let postkarteVersendet: boolean;
 	let formularGeoffnet: boolean;
@@ -21,7 +18,7 @@
 		if (empfaenger && strasse_hausnummer && plz_ort) {
 			event.preventDefault();
 			const payload = {
-				grusstext: toSharableText(elternbrief),
+				grusstext: $elternbriefText,
 				adresse: {
 					adresszeile1: empfaenger,
 					adresszeile2: zusatz,

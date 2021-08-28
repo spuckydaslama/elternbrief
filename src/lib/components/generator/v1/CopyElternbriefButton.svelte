@@ -1,15 +1,13 @@
 <script lang="ts">
-	import { toSharableText } from './elternbrief';
-	import type { Elternbrief } from './elternbriefTypes';
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { elternbriefText } from '$lib/stores';
 
-	export let elternbrief: Elternbrief;
 	let savedToClipboard: boolean;
 	onMount(async () => {
 		const ClipboardJS = (await import('clipboard')).default;
 		const clipboardInstance = new ClipboardJS('.briefkopieren', {
-			text: () => toSharableText(elternbrief)
+			text: () => $elternbriefText
 		});
 		clipboardInstance.on('success', () => {
 			savedToClipboard = true;

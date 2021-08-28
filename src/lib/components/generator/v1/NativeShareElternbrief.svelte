@@ -1,16 +1,13 @@
 <script lang="ts">
-	import type { Elternbrief } from './elternbriefTypes';
 	import { onMount } from 'svelte';
-	import { toSharableText } from './elternbrief';
+	import { elternbriefText } from '$lib/stores';
 
 	let nativeShare;
 	onMount(async () => {
 		nativeShare = window.navigator.share.bind(window.navigator);
 	});
-	export let elternbrief: Elternbrief;
-
 	const handleShareAction = async () => {
-		nativeShare({ text: toSharableText(elternbrief) });
+		nativeShare({ text: $elternbriefText });
 	};
 </script>
 
