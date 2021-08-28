@@ -17,7 +17,7 @@
 
 <div>
 	{#if showActionLabel}
-		<sub class="text-indigo-600" transition:blur>Passe den Brief an</sub>
+		<sub class="text-indigo-600" transition:blur>Elternbrief geändert</sub>
 	{:else}
 		<sub>&nbsp;</sub>
 	{/if}
