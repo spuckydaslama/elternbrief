@@ -89,7 +89,7 @@
 		</form>
 	</div>
 	<div class="lg:col-span-2">
-		<h2 class="mb-4 text-2xl">Der Elternbrief</h2>
+		<h2 class="mb-2 text-2xl">Der Elternbrief</h2>
 		<div class="p-1.5">
 			<EditableElternbrief />
 		</div>
