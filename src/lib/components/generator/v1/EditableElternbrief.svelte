@@ -3,14 +3,14 @@
 	import { elternbriefText } from '$lib/stores';
 	import { onDestroy } from 'svelte';
 
-	let showActionLabel: boolean;
-	let hideActionLabelTimer;
+	let showChanged: boolean;
+	let hideChangedTimer;
 	const elternbriefTextUnsubscribe = elternbriefText.subscribe(() => {
-		showActionLabel = true;
-		if (hideActionLabelTimer) {
-			clearTimeout(hideActionLabelTimer);
+		showChanged = true;
+		if (hideChangedTimer) {
+			clearTimeout(hideChangedTimer);
 		}
-		hideActionLabelTimer = setTimeout(() => (showActionLabel = false), 3000);
+		hideChangedTimer = setTimeout(() => (showChanged = false), 2500);
 	});
 	onDestroy(elternbriefTextUnsubscribe);
 
@@ -19,26 +19,40 @@
 </script>
 
 <div>
-	<div class="flex h-4">
+	<div>
 		{#if zeichenUebrig >= 0}
-			<sub class="text-indigo-600 flex-1">
+			<span class="text-xs text-indigo-600 flex-1">
 				Noch {zeichenUebrig} von maximal {maxZeichen} Zeichen übrig
-			</sub>
+			</span>
 		{:else}
-			<sub class="text-red-600 flex-1">
+			<span class="text-xs text-red-600 flex-1">
 				Zuviele Zeichen: {maxZeichen - zeichenUebrig} von maximal {maxZeichen} Zeichen
-			</sub>
-		{/if}
-		{#if showActionLabel}
-			<sub class="text-indigo-600" transition:blur>Elternbrief geändert</sub>
-		{:else}
-			<sub>&nbsp;</sub>
+			</span>
 		{/if}
 	</div>
-	<textarea
-		class:bg-red-200={zeichenUebrig < 0}
-		class="w-full"
-		rows="24"
-		bind:value={$elternbriefText}
-	/>
+	<div class="relative">
+		<textarea
+			class:bg-red-200={zeichenUebrig < 0}
+			class="w-full"
+			rows="24"
+			bind:value={$elternbriefText}
+		/>
+		{#if showChanged}
+			<svg
+				transition:blur
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-6 w-6 absolute top-1 right-1 text-indigo-600"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+				/>
+			</svg>
+		{/if}
+	</div>
 </div>
