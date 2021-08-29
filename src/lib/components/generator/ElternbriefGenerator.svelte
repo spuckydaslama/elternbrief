@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { elternbriefText } from '$lib/stores';
 	import type { Wieviele } from './v1/elternbriefTypes';
-	import { createElternbrief } from './v1/elternbrief';
-	import HtmlElternbrief from './v1/HtmlElternbrief.svelte';
+	import { createElternbrief, toSharableText } from './v1/elternbrief';
 	import NativeShareElternbrief from './v1/NativeShareElternbrief.svelte';
 	import CopyElternbriefButton from './v1/CopyElternbriefButton.svelte';
+	import PostkarteVersenden from './v1/PostkarteVersenden.svelte';
+	import EditableElternbrief from './v1/EditableElternbrief.svelte';
 
 	let wieviele: Wieviele = 2;
 	let anrede = 'Liebe Oma, Lieber Opa';
@@ -20,11 +22,16 @@
 		bausteinTempolimit,
 		bausteinSolaranlage
 	});
+	$: {
+		if (elternbrief) {
+			$elternbriefText = toSharableText(elternbrief);
+		}
+	}
 </script>
 
 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-full p-1.5">
 	<div>
-		<h2 class="text-2xl mb-8">Deine Anpassungen</h2>
+		<h2 class="text-2xl mb-8">Vorlagen</h2>
 		<form>
 			<div class="m-4 flex flex-col md:flex-row md:space-x-3">
 				<label>
@@ -82,13 +89,18 @@
 		</form>
 	</div>
 	<div class="lg:col-span-2">
-		<h2 class="text-2xl mb-4">Der fertige Elternbrief</h2>
-		<div class="bg-gray-100 p-1.5">
-			<HtmlElternbrief {elternbrief} />
+		<h2 class="mb-4 text-2xl">Der Elternbrief</h2>
+		<div class="p-1.5">
+			<EditableElternbrief />
 		</div>
-		<div class="mt-8 flex space-x-3">
-			<NativeShareElternbrief {elternbrief} />
-			<CopyElternbriefButton {elternbrief} />
+		<div class="mt-8 flex flex-col space-y-2">
+			<div class="flex flex-col sm:flex-row sm:space-x-2 sm:space-y-0 space-y-2">
+				<NativeShareElternbrief />
+				<CopyElternbriefButton />
+			</div>
+			<div>
+				<PostkarteVersenden />
+			</div>
 		</div>
 	</div>
 </section>

@@ -1,5 +1,5 @@
 <script>
-	import ElternbriefGenerator from '../components/generator/ElternbriefGenerator.svelte';
+	import ElternbriefGenerator from '$lib/components/generator/ElternbriefGenerator.svelte';
 </script>
 
 <svelte:head>
