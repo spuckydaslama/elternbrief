@@ -1,5 +1,6 @@
 <script>
 	import ElternbriefGenerator from '$lib/components/generator/ElternbriefGenerator.svelte';
+	import Faq from '$lib/components/faq/Faq.svelte';
 </script>
 
 <svelte:head>
@@ -25,6 +26,7 @@
 	</ul>
 </section>
 <ElternbriefGenerator />
+<Faq />
 <section>
 	<h2 class="text-2xl mb-4 mt-8">Über uns</h2>
 	<p>
