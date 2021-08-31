@@ -28,13 +28,7 @@
 <ElternbriefGenerator />
 <Faq />
 <section>
-	<h2 class="text-2xl mb-4 mt-8">Über uns</h2>
-	<p>
-		Wir sind besorgte Eltern und wollen unsere begrenzten Fähigkeiten nutzen, einen kleine Teil
-		dafür zu tun, die Zukunft positiv zu gestallten. Wir suchen Unterstützung jeder Art, egal ob
-		Formulierungen, Kooperationen oder was man eben braucht. Schreibt einfach!
-	</p>
-	<h3 class="text-xl mb-4 mt-4">Impressum</h3>
+	<h2 class="text-2xl mb-4 mt-4">Impressum</h2>
 	<p>Sebastian Kurt</p>
 	<p>sebastian.kurt@gmail.com</p>
 </section>
