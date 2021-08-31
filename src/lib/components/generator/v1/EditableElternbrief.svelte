@@ -34,7 +34,7 @@
 		<textarea
 			class:bg-red-200={zeichenUebrig < 0}
 			class="w-full"
-			rows="24"
+			rows="12"
 			bind:value={$elternbriefText}
 		/>
 		{#if showChanged}

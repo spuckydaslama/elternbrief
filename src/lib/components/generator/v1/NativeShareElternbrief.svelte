@@ -17,7 +17,7 @@
 			class="flex items-center rounded-lg whitespace-nowrap text-lg bg-indigo-600 hover:bg-indigo-800 focus:outline-none focus:border-black border-indigo-600 border-2 text-white p-2"
 			on:click={handleShareAction}
 		>
-			Brief teilen
+			Text teilen
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-8 w-8 ml-1"

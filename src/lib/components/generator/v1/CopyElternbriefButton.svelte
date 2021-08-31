@@ -22,7 +22,7 @@
 	<button
 		class="briefkopieren flex items-center text-xl rounded-lg whitespace-nowrap text-lg bg-indigo-600 hover:bg-indigo-800 focus:outline-none focus:border-black border-indigo-600 border-2 text-white p-2"
 	>
-		Brief kopieren
+		Text kopieren
 		{#if savedToClipboard}
 			<svg
 				in:fly={{ x: 8 }}
