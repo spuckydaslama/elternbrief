@@ -1,11 +1,10 @@
-export type Wieviele = 0 | 1 | 2;
 export type ElternbriefInput = {
-	wieviele: Wieviele;
 	anrede: string;
-	grussformel: string;
-	bausteinKreuzfahrt: boolean;
-	bausteinTempolimit: boolean;
-	bausteinSolaranlage: boolean;
+	ersterSatz: string;
+	festeEinleitung: string;
+	grund: string;
+	schlussworte: string;
+	abschied: string;
 };
 
 export class BriefNewline {}
