@@ -41,7 +41,7 @@
 			</div>
 			<div class="m-4">
 				<label class="text-xs text-indigo-600" for="ersterSatz">
-					Einleitung <span class='text-indigo-400'>
+					Einleitung <span class="text-indigo-400">
 						- <svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-4 w-4 inline"
