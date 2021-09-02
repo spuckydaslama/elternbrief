@@ -4,7 +4,9 @@
 
 	let nativeShare;
 	onMount(async () => {
-		nativeShare = window.navigator.share.bind(window.navigator);
+		if (window.navigator?.share) {
+			nativeShare = window.navigator.share.bind(window.navigator);
+		}
 	});
 	const handleShareAction = async () => {
 		nativeShare({ text: $elternbriefText });

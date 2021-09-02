@@ -20,6 +20,9 @@
 		</ul>
 	</div>
 	<div class="md:mt-0 mt-2 md:ml-2 self-center">
-		<img class="border md:max-h-64" src="postkartenmotiv.jpg" alt="Postkartenmotiv" />
+		<picture>
+			<source srcset="postkartenmotiv.avif" type="image/avif" />
+			<img class="border md:max-h-64" src="postkartenmotiv.jpg" alt="Postkartenmotiv" />
+		</picture>
 	</div>
 </section>

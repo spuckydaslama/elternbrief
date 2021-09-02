@@ -3,6 +3,6 @@
 	export let target = '_blank';
 </script>
 
-<a class="text-blue-700 underline" {target} {href}>
+<a class="text-blue-700 underline" {target} {href} rel="noreferrer">
 	<slot />
 </a>

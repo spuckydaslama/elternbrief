@@ -32,6 +32,7 @@
 	</div>
 	<div class="relative">
 		<textarea
+			aria-label="Elternbrieftext"
 			class:bg-red-200={zeichenUebrig < 0}
 			class="w-full"
 			rows="12"
