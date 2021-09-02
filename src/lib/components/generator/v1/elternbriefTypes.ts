@@ -1,7 +1,7 @@
-export type Wieviele = 0 | 1 | 2;
 export type ElternbriefInput = {
 	anrede: string;
 	ersterSatz: string;
+	festeEinleitung: string;
 	grund: string;
 	schlussworte: string;
 	abschied: string;

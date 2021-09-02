@@ -8,15 +8,18 @@
 	import EditableElternbrief from './v1/EditableElternbrief.svelte';
 
 	let anrede = 'Liebe Oma, Lieber Opa';
-	let ersterSatz = 'Hier schreibt euch <Enkelkind>';
+	let ersterSatz = 'Hier schreibt euch <Name-des/r-Kindes/r>.';
+	const festeEinleitung =
+		'Am 26.9. sind Wahlen. Alle Erwachsenen dürfen eine neue Regierung wählen. Meine Stimme ist nicht vertreten. Doch es geht es um meine Zukunft.';
 	let grund = $elternbriefGruende[0].lang;
 	let schlussworte = $elternbriefSchlussworte[0].lang;
-	let abschied = 'Seid fest umarmt, Euer <Enkelkind>';
+	let abschied = 'Seid fest umarmt, Euer <Name-des/r-Kindes/r>.';
 
 	let elternbrief: Elternbrief;
 	$: elternbrief = createElternbrief({
 		anrede,
 		ersterSatz,
+		festeEinleitung,
 		grund,
 		schlussworte,
 		abschied
@@ -33,11 +36,28 @@
 		<h2 class="text-2xl mt-4 mb-4">Textbausteine für deine Postkarte</h2>
 		<form>
 			<div class="m-4">
-				<label class="text-xs text-indigo-600" for="andrede">Anrede</label>
+				<label class="text-xs text-indigo-600" for="andrede"> Anrede </label>
 				<input class="w-full" type="text" id="andrede" name="anrede" bind:value={anrede} />
 			</div>
 			<div class="m-4">
-				<label class="text-xs text-indigo-600" for="ersterSatz">Einleitung</label>
+				<label class="text-xs text-indigo-600" for="ersterSatz">
+					Einleitung <span class='text-indigo-400'>
+						- <svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4 inline"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg> Bitte &lt;&gt; mit dem Namen des/der Kindes/r ersetzen
+					</span>
+				</label>
 				<input
 					class="w-full"
 					type="text"
@@ -69,7 +89,24 @@
 				{/each}
 			</div>
 			<div class="m-4">
-				<label class="text-xs text-indigo-600" for="abschied">Abschied</label>
+				<label class="text-xs text-indigo-600" for="abschied">
+					Abschied <span class="text-indigo-400">
+						- <svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-4 w-4 inline"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg> Bitte &lt;&gt; mit dem Namen des/der Kindes/r ersetzen
+					</span>
+				</label>
 				<input class="w-full" type="text" id="abschied" name="abschied" bind:value={abschied} />
 			</div>
 		</form>
