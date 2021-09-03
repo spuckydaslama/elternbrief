@@ -2,10 +2,9 @@
 	import { elternbriefGruende, elternbriefSchlussworte, elternbriefText } from '$lib/stores';
 	import type { Elternbrief } from './v1/elternbriefTypes';
 	import { createElternbrief, toSharableText } from './v1/elternbrief';
-	import NativeShareElternbrief from './v1/NativeShareElternbrief.svelte';
-	import CopyElternbriefButton from './v1/CopyElternbriefButton.svelte';
 	import PostkarteVersenden from './v1/PostkarteVersenden.svelte';
 	import EditableElternbrief from './v1/EditableElternbrief.svelte';
+	import NativeShareOrCopyElternbrief from '$lib/components/generator/v1/NativeShareOrCopyElternbrief.svelte';
 
 	let anrede = 'Liebe Oma, Lieber Opa';
 	let ersterSatz = 'Hier schreibt euch <Name-des/r-Kindes/r>.';
@@ -112,18 +111,14 @@
 		</form>
 	</div>
 	<div class="lg:col-span-2">
-		<h2 class="mt-4 mb-2 text-2xl">Der Text der Postkarte</h2>
+		<h2 class="mt-4 mb-2 text-2xl flex items-center">
+			Der Text der Postkarte <NativeShareOrCopyElternbrief {elternbrief} />
+		</h2>
 		<div class="p-1.5">
 			<EditableElternbrief />
 		</div>
-		<div class="mt-8 flex flex-col space-y-2">
-			<div class="flex flex-col sm:flex-row sm:space-x-2 sm:space-y-0 space-y-2">
-				<NativeShareElternbrief />
-				<CopyElternbriefButton />
-			</div>
-			<div>
-				<PostkarteVersenden />
-			</div>
+		<div class="mt-4">
+			<PostkarteVersenden />
 		</div>
 	</div>
 </section>
