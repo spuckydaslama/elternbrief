@@ -1,5 +1,5 @@
 <h1 class="text-4xl text-center my-8">Gib deinem Kind eine Stimme</h1>
-<section class="md:grid md:grid-cols-2 lg:grid-cols-3">
+<section class="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
 	<div class="lg:col-span-2">
 		<div>
 			<h2 class="inline caps-small text-indigo-800 text-2xl mr-1">Warum?</h2>
@@ -29,7 +29,7 @@
 			<li>Sprich mit den Angeschriebenen.</li>
 		</ul>
 	</div>
-	<div class="md:mt-0 mt-2 md:ml-2 self-center">
+	<div class="md:mt-0 mt-2 md:ml-2 self-center order-first md:order-none">
 		<picture>
 			<source srcset="postkartenmotiv.avif" type="image/avif" />
 			<img class="border md:max-h-64" src="postkartenmotiv.jpg" alt="Postkartenmotiv" />

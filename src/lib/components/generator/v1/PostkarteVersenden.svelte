@@ -14,11 +14,13 @@
 	let strasse_hausnummer: string;
 	let plz_ort: string;
 
+	$: grusstext = $elternbriefText;
+
 	const handleSubmit = async (event) => {
 		if (empfaenger && strasse_hausnummer && plz_ort) {
 			event.preventDefault();
 			const payload = {
-				grusstext: $elternbriefText,
+				grusstext: grusstext,
 				adresse: {
 					adresszeile1: empfaenger,
 					adresszeile2: zusatz,
@@ -55,7 +57,7 @@
 		class:bg-gray-500={formularGeoffnet}
 		class:hover:bg-gray-600={formularGeoffnet}
 		class:border-gray-500={formularGeoffnet}
-		class="flex items-center text-xl rounded-lg whitespace-nowrap text-lg focus:outline-none focus:border-black border-2 text-white p-2"
+		class="flex items-center justify-center w-full md:w-auto text-xl rounded-lg whitespace-nowrap text-lg focus:outline-none focus:border-black border-2 text-white p-2"
 		on:click={handleButtonClick}
 	>
 		Als Postkarte versenden
@@ -93,18 +95,32 @@
 	{/if}
 	{#if formularGeoffnet}
 		<div transition:slide>
-			<form class="mt-3 space-y-2">
+			<form class="mt-3 space-y-2 w-full md:w-auto ">
 				<div>
 					<label class="required block" for="empfaenger">Empfänger</label>
-					<input bind:value={empfaenger} id="empfaenger" name="empfaenger" type="text" required />
+					<input
+						class="w-full md:w-auto"
+						bind:value={empfaenger}
+						id="empfaenger"
+						name="empfaenger"
+						type="text"
+						required
+					/>
 				</div>
 				<div>
 					<label class="block" for="zusatz">Zusatz</label>
-					<input bind:value={zusatz} id="zusatz" name="zusatz" type="text" />
+					<input
+						class="w-full md:w-auto"
+						bind:value={zusatz}
+						id="zusatz"
+						name="zusatz"
+						type="text"
+					/>
 				</div>
 				<div>
 					<label class="required block" for="strasse_hausnummer">Straße und Hausnummer</label>
 					<input
+						class="w-full md:w-auto"
 						bind:value={strasse_hausnummer}
 						id="strasse_hausnummer"
 						name="strasse_hausnummer"
@@ -114,12 +130,19 @@
 				</div>
 				<div>
 					<label class="required block" for="plz_ort">PLZ und Stadt</label>
-					<input bind:value={plz_ort} id="plz_ort" name="plz_ort" type="text" required />
+					<input
+						class="w-full md:w-auto"
+						bind:value={plz_ort}
+						id="plz_ort"
+						name="plz_ort"
+						type="text"
+						required
+					/>
 				</div>
 				<button
 					type="submit"
 					on:click={handleSubmit}
-					class="bg-yellow-600 hover:bg-yellow-700 border-yellow-600 flex items-center text-xl rounded-lg whitespace-nowrap text-lg focus:outline-none focus:border-black border-2 text-white p-2"
+					class="justify-center w-full md:w-auto bg-yellow-600 hover:bg-yellow-700 border-yellow-600 flex items-center text-xl rounded-lg whitespace-nowrap text-lg focus:outline-none focus:border-black border-2 text-white p-2"
 				>
 					Jetzt verschicken
 					<svg
