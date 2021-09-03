@@ -94,9 +94,6 @@
 		</div>
 	{/if}
 	{#if formularGeoffnet}
-		<div>
-			{grusstext}
-		</div>
 		<div transition:slide>
 			<form class="mt-3 space-y-2 w-full md:w-auto ">
 				<div>
