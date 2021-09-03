@@ -29,10 +29,7 @@
 
 {#if !!nativeShare}
 	<div>
-		<button
-			class="flex items-center"
-			on:click={handleShareAction}
-		>
+		<button class="flex items-center" on:click={handleShareAction}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-7 w-7 ml-1 btn-icononly-primary"
@@ -51,9 +48,7 @@
 	</div>
 {:else}
 	<div>
-		<button
-			class="briefkopieren flex items-center"
-		>
+		<button class="briefkopieren flex items-center">
 			{#if savedToClipboard}
 				<svg
 					in:fly={{ x: 8 }}
