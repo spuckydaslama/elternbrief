@@ -5,8 +5,7 @@ export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 	const elternbrief: Elternbrief = [];
 	elternbrief.push(new BriefParagraph(userInput.anrede));
 	elternbrief.push(new BriefParagraph(userInput.ersterSatz));
-	elternbrief.push(new BriefParagraph(userInput.festeEinleitung));
-	elternbrief.push(new BriefParagraph(userInput.grund));
+	elternbrief.push(new BriefParagraph(userInput.festeEinleitung + userInput.grund));
 	elternbrief.push(new BriefParagraph(userInput.schlussworte));
 	elternbrief.push(new BriefParagraph(userInput.abschied));
 	return elternbrief;

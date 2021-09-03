@@ -14,7 +14,7 @@
 	});
 	onDestroy(elternbriefTextUnsubscribe);
 
-	const maxZeichen = 500;
+	const maxZeichen = 650;
 	$: zeichenUebrig = maxZeichen - $elternbriefText.replace(/[\n\r]/g, '').length;
 </script>
 
