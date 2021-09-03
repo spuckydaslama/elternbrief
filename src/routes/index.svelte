@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Elternbrief</title>
+	<title>Stimme für Kinder - Postkarten für ihre Zukunft</title>
 </svelte:head>
 
 <Intro />
