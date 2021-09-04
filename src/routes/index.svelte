@@ -18,6 +18,7 @@
 		content="Im Herbst sind Bundestagswahlen. Die Kinder haben wenig Einfluss darauf. Trotzdem geht es zu großen Teilen um ihre Zukunft. Wir wollen ihnen eine Stimme verleihen."
 	/>
 	<meta property="og:image" content="https://stimme-fuer-kinder.de/postkartenmotiv.jpg" />
+	<meta property="og:image:alt" content="Postkartenmotiv" />
 	<meta property="og:locale" content="de_DE" />
 </svelte:head>
 
