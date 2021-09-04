@@ -3,11 +3,13 @@ import { BriefNewline, BriefParagraph } from './elternbriefTypes';
 
 export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 	const elternbrief: Elternbrief = [];
-	elternbrief.push(new BriefParagraph(userInput.anrede));
-	elternbrief.push(new BriefParagraph(userInput.ersterSatz));
-	elternbrief.push(new BriefParagraph(userInput.festeEinleitung + userInput.grund));
-	elternbrief.push(new BriefParagraph(userInput.schlussworte));
-	elternbrief.push(new BriefParagraph(userInput.abschied));
+	elternbrief.push(new BriefParagraph(userInput.anrede.trim()));
+	elternbrief.push(
+		new BriefParagraph(userInput.ersterSatz?.trim() + ' ' + userInput.festeEinleitung?.trim())
+	);
+	elternbrief.push(new BriefParagraph(userInput.grund.trim()));
+	elternbrief.push(new BriefParagraph(userInput.schlussworte.trim()));
+	elternbrief.push(new BriefParagraph(userInput.abschied.trim()));
 	return elternbrief;
 };
 
