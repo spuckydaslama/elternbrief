@@ -9,7 +9,7 @@
 	let anrede = 'Liebe Oma, Lieber Opa';
 	let ersterSatz = 'Hier schreibt euch <Name-des/r-Kindes/r>.';
 	const festeEinleitung =
-		'Am 26.9. sind Wahlen. Alle Erwachsenen dürfen eine neue Regierung wählen. Meine Stimme ist nicht vertreten. Doch es geht es um meine Zukunft. ';
+		'Am 26.9. sind Wahlen. Alle Erwachsenen dürfen eine neue Regierung wählen. Meine Stimme ist nicht vertreten. Doch es geht um meine Zukunft. ';
 	let grund = $elternbriefGruende[0].lang;
 	let schlussworte = $elternbriefSchlussworte[0].lang;
 	let abschied = 'Seid fest umarmt, Euer <Name-des/r-Kindes/r>.';
