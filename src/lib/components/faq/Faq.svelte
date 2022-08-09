@@ -26,7 +26,7 @@
 		Nein. Für dich ist der Versand kostenlos. Wir prüfen den Inhalt er erstellten Karten und geben
 		diese i.d.R. frei für den Versand. Wer noch mehr Stimmen für Kinder als Postkarte ermöglichen
 		will, unterstützt uns mit einer
-		<ExternalLink href="https://paypal.me/pools/c/8CtY2nSHnd">Spende</ExternalLink>!
+		<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">Spende</ExternalLink>!
 	</p>
 </FaqQuestionAndAnswer>
 
@@ -41,7 +41,7 @@
 	<ol class="list-decimal list-inside ml-2">
 		<li>Weitersagen und mehr Menschen davon überzeugen, zur Wahl aktiv zu werden.</li>
 		<li>
-			<ExternalLink href="https://paypal.me/pools/c/8CtY2nSHnd">Spenden</ExternalLink> und ermöglichen,
+			<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">Spenden</ExternalLink> und ermöglichen,
 			dass mehr Karten verschickt werden!
 		</li>
 	</ol>
@@ -50,7 +50,7 @@
 	<p>
 		Egal ob du selbst eine Postkarte schickst oder auch nicht, mit jedem kleinen Betrag haben noch
 		mehr Menschen die Chance andere auf die Stimme für Kinder hinzuweisen. Am schnellsten über
-		<ExternalLink href="https://paypal.me/pools/c/8CtY2nSHnd">
+		<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">
 			Paypal und unsere Spendenaktion</ExternalLink
 		>.
 	</p>
