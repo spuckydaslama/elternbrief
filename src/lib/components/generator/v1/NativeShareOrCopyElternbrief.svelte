@@ -3,27 +3,35 @@
 	import { fade, fly } from 'svelte/transition';
 	import { elternbriefText } from '$lib/stores';
 
-	let nativeShare;
-	let savedToClipboard: boolean;
+	/* workaround for not finding the interface. copy of ShareData in lib.dom.d.ts */
+	interface ShareData {
+		files?: File[];
+		text?: string;
+		title?: string;
+		url?: string;
+	}
+
+	let nativeShare: (data?: ShareData | undefined) => Promise<void>;
 	onMount(async () => {
-		if (window.navigator?.share) {
-			nativeShare = window.navigator.share.bind(window.navigator);
-		} else {
-			const ClipboardJS = (await import('clipboard')).default;
-			const clipboardInstance = new ClipboardJS('.briefkopieren', {
-				text: () => $elternbriefText
-			});
-			clipboardInstance.on('success', () => {
-				savedToClipboard = true;
-				setTimeout(() => {
-					savedToClipboard = false;
-				}, 2000);
-			});
+		if (window.navigator) {
+			const navigator: Navigator = window.navigator;
+			nativeShare = navigator.share.bind(navigator);
 		}
 	});
 
 	const handleShareAction = async () => {
-		nativeShare({ text: $elternbriefText });
+		await nativeShare({ text: $elternbriefText });
+	};
+
+	let savedToClipboard: boolean;
+	const handleCopyToClipboardClick = () => {
+		if (window.navigator?.clipboard) {
+			window.navigator.clipboard.writeText($elternbriefText);
+			savedToClipboard = true;
+			setTimeout(() => {
+				savedToClipboard = false;
+			}, 2000);
+		}
 	};
 </script>
 
@@ -48,7 +56,7 @@
 	</div>
 {:else}
 	<div>
-		<button class="briefkopieren flex items-center">
+		<button class="flex items-center" on:click={handleCopyToClipboardClick}>
 			{#if savedToClipboard}
 				<svg
 					in:fly={{ x: 8 }}

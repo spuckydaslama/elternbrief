@@ -5,6 +5,7 @@
 	import PostkarteVersenden from './v1/PostkarteVersenden.svelte';
 	import EditableElternbrief from './v1/EditableElternbrief.svelte';
 	import NativeShareOrCopyElternbrief from '$lib/components/generator/v1/NativeShareOrCopyElternbrief.svelte';
+	import { onMount } from 'svelte';
 
 	let anrede = 'Liebe Oma, Lieber Opa';
 	let ersterSatz = 'Hier schreibt euch <Name-des/r-Kindes/r>.';
@@ -112,7 +113,7 @@
 	</div>
 	<div class="lg:col-span-2">
 		<h2 class="mt-4 mb-2 text-2xl flex items-center">
-			Der Text der Postkarte <NativeShareOrCopyElternbrief {elternbrief} />
+			Der Text der Postkarte <NativeShareOrCopyElternbrief />
 		</h2>
 		<div class="p-1.5">
 			<EditableElternbrief />

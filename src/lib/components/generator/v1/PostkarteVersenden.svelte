@@ -16,7 +16,7 @@
 
 	$: grusstext = $elternbriefText;
 
-	const handleSubmit = async (event) => {
+	const handleSubmit = async (event: MouseEvent) => {
 		if (empfaenger && strasse_hausnummer && plz_ort) {
 			event.preventDefault();
 			const payload = {
