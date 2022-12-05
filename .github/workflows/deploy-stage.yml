@@ -32,6 +32,7 @@ jobs:
       - name: 'build'
         run: |
           pnpm lint
+          pnpm check
           pnpm build
 
       - name: Deploy to production
