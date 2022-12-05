@@ -5,7 +5,6 @@
 	import PostkarteVersenden from './v1/PostkarteVersenden.svelte';
 	import EditableElternbrief from './v1/EditableElternbrief.svelte';
 	import NativeShareOrCopyElternbrief from '$lib/components/generator/v1/NativeShareOrCopyElternbrief.svelte';
-	import { onMount } from 'svelte';
 
 	let anrede = 'Liebe Oma, Lieber Opa';
 	let ersterSatz = 'Hier schreibt euch <Name-des/r-Kindes/r>.';
