@@ -9,7 +9,7 @@
 	let anrede = 'Liebe Oma, Lieber Opa';
 	let ersterSatz = 'Hier schreibt euch <Name-des/r-Kindes/r>.';
 	const festeEinleitung =
-		'Am 26.9. sind Wahlen. Alle Erwachsenen dürfen eine neue Regierung wählen. Meine Stimme ist nicht vertreten. Doch es geht um meine Zukunft. ';
+		'Die Zukunft steht bevor. Meine Stimme ist nicht vertreten. Doch es geht es um meine Zukunft. ';
 	let grund = $elternbriefGruende[0].lang;
 	let schlussworte = $elternbriefSchlussworte[0].lang;
 	let abschied = 'Seid fest umarmt, Euer <Name-des/r-Kindes/r>.';
@@ -112,7 +112,7 @@
 	</div>
 	<div class="lg:col-span-2">
 		<h2 class="mt-4 mb-2 text-2xl flex items-center">
-			Der Text der Postkarte <NativeShareOrCopyElternbrief {elternbrief} />
+			Der Text der Postkarte <NativeShareOrCopyElternbrief />
 		</h2>
 		<div class="p-1.5">
 			<EditableElternbrief />

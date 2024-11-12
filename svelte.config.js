@@ -1,5 +1,5 @@
+import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
-import staticadapter from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -12,19 +12,11 @@ const config = {
 	],
 
 	kit: {
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte',
-		adapter: staticadapter({
-			// default options are shown
-			pages: 'build',
-			assets: 'build'
-		})
+		adapter: adapter(),
+		files: {
+			lib: 'src/lib'
+		}
 	}
 };
-
-// Workaround until SvelteKit uses Vite 2.3.8 (and it's confirmed to fix the Tailwind JIT problem)
-const mode = process.env.NODE_ENV;
-const dev = mode === 'development';
-process.env.TAILWIND_MODE = dev ? 'watch' : 'build';
 
 export default config;

@@ -4,7 +4,7 @@
 	import { onDestroy } from 'svelte';
 
 	let showChanged: boolean;
-	let hideChangedTimer;
+	let hideChangedTimer: ReturnType<typeof setTimeout>;
 	const elternbriefTextUnsubscribe = elternbriefText.subscribe(() => {
 		showChanged = true;
 		if (hideChangedTimer) {

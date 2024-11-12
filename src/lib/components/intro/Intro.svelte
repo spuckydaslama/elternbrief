@@ -4,8 +4,8 @@
 		<div>
 			<h2 class="inline caps-small text-indigo-800 text-2xl mr-1">Warum?</h2>
 			<p class="inline">
-				Im Herbst sind Bundestagswahlen. Die Kinder haben wenig Einfluss darauf. Trotzdem geht es zu
-				großen Teilen um ihre Zukunft. Wir wollen ihnen eine Stimme verleihen.
+				Die Zukunft steht bevor, Kinder haben wenig Einfluss darauf. Wir wollen ihnen eine Stimme
+				verleihen.
 			</p>
 		</div>
 		<div>
