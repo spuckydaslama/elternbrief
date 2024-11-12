@@ -1,9 +1,11 @@
-<script>
+<svelte:options runes={true} />
+
+<script lang="ts">
 	import FaqQuestionAndAnswer from './FaqQuestionAndAnswer.svelte';
 	import ExternalLink from '$lib/components/atoms/ExternalLink.svelte';
 </script>
 
-<h2 class="text-2xl mb-4 mt-8">Fragen und Antworten - FAQ</h2>
+<h2 class="mb-4 mt-8 text-2xl">Fragen und Antworten - FAQ</h2>
 <FaqQuestionAndAnswer question="Verschicken wir wirklich Postkarten?">
 	<p>
 		Ja. Wir arbeiten mit <ExternalLink href="https://www.urlaubsgruss.com/">
@@ -38,7 +40,7 @@
 	</p>
 </FaqQuestionAndAnswer>
 <FaqQuestionAndAnswer question="Wie kann ich helfen?">
-	<ol class="list-decimal list-inside ml-2">
+	<ol class="ml-2 list-inside list-decimal">
 		<li>Weitersagen und mehr Menschen davon überzeugen, zur Wahl aktiv zu werden.</li>
 		<li>
 			<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">Spenden</ExternalLink> und ermöglichen,
@@ -56,7 +58,7 @@
 	</p>
 </FaqQuestionAndAnswer>
 <FaqQuestionAndAnswer question="Gibt es noch andere Wege den Kindern eine Stimme zu geben?">
-	<ul class="list-disc list-inside ml-2">
+	<ul class="ml-2 list-inside list-disc">
 		<li>
 			<ExternalLink href="https://www.enkelkinderbriefe.de/">Enkelkinderbriefe</ExternalLink> - Fix einen
 			Brief erstellen

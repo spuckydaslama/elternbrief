@@ -1,26 +1,26 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { slide, fade } from 'svelte/transition';
-	import { elternbriefText } from '$lib/stores';
+	import { elternBriefGlobalState } from '../../../ElternbriefGlobalState.svelte';
 
-	let postkarteVersendet: boolean;
-	let formularGeoffnet: boolean;
+	let postkarteVersendet: boolean = $state(false);
+	let formularGeoffnet: boolean = $state(false);
 	const handleButtonClick = () => {
 		formularGeoffnet = !formularGeoffnet;
 		postkarteVersendet = false;
 	};
 
-	let empfaenger: string;
-	let zusatz: string;
-	let strasse_hausnummer: string;
-	let plz_ort: string;
-
-	$: grusstext = $elternbriefText;
+	let empfaenger: string = $state('');
+	let zusatz: string = $state('');
+	let strasse_hausnummer: string = $state('');
+	let plz_ort: string = $state('');
 
 	const handleSubmit = async (event: MouseEvent) => {
 		if (empfaenger && strasse_hausnummer && plz_ort) {
 			event.preventDefault();
 			const payload = {
-				grusstext: grusstext,
+				grusstext: elternBriefGlobalState.elternbriefText,
 				adresse: {
 					adresszeile1: empfaenger,
 					adresszeile2: zusatz,
@@ -57,13 +57,13 @@
 		class:bg-gray-500={formularGeoffnet}
 		class:hover:bg-gray-600={formularGeoffnet}
 		class:border-gray-500={formularGeoffnet}
-		class="flex items-center justify-center w-full md:w-auto text-xl rounded-lg whitespace-nowrap text-lg focus:outline-none focus:border-black border-2 text-white p-2"
-		on:click={handleButtonClick}
+		class="flex w-full items-center justify-center whitespace-nowrap rounded-lg border-2 p-2 text-xl text-white focus:border-black focus:outline-none md:w-auto"
+		onclick={handleButtonClick}
 	>
 		Als Postkarte versenden
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			class="h-8 w-8 ml-1"
+			class="ml-1 h-8 w-8"
 			fill="none"
 			viewBox="0 0 24 24"
 			stroke="currentColor"
@@ -77,7 +77,7 @@
 		</svg>
 	</button>
 	{#if postkarteVersendet}
-		<div class="flex text-green-600 text-sm" transition:fade>
+		<div class="flex text-sm text-green-600" transition:fade>
 			<span>Postkarte erfolgreich in Auftrag gegeben</span>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +95,7 @@
 	{/if}
 	{#if formularGeoffnet}
 		<div transition:slide>
-			<form class="mt-3 space-y-2 w-full md:w-auto ">
+			<form class="mt-3 w-full space-y-2 md:w-auto">
 				<div>
 					<label class="required block" for="empfaenger">Empfänger</label>
 					<input
@@ -141,13 +141,13 @@
 				</div>
 				<button
 					type="submit"
-					on:click={handleSubmit}
-					class="justify-center w-full md:w-auto bg-yellow-600 hover:bg-yellow-700 border-yellow-600 flex items-center text-xl rounded-lg whitespace-nowrap text-lg focus:outline-none focus:border-black border-2 text-white p-2"
+					onclick={handleSubmit}
+					class="flex w-full items-center justify-center whitespace-nowrap rounded-lg border-2 border-yellow-600 bg-yellow-600 p-2 text-xl text-white hover:bg-yellow-700 focus:border-black focus:outline-none md:w-auto"
 				>
 					Jetzt verschicken
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="h-8 w-8 ml-1"
+						class="ml-1 h-8 w-8"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"

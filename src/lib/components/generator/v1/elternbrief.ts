@@ -1,5 +1,5 @@
 import type { Elternbrief, ElternbriefInput } from './elternbriefTypes';
-import { BriefNewline, BriefParagraph } from './elternbriefTypes';
+import { BriefParagraph } from './elternbriefTypes';
 
 export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 	const elternbrief: Elternbrief = [];
@@ -19,9 +19,7 @@ export const toSharableText = (elternbrief: Elternbrief): string => {
 			if (briefelement instanceof BriefParagraph) {
 				return briefelement.text + '\n';
 			}
-			if (briefelement instanceof BriefNewline) {
-				return '\n';
-			}
+			return '\n';
 		})
 		.join('');
 };
