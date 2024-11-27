@@ -3,9 +3,7 @@ name: Check the Code
 on:
   push:
     branches:
-      # main and develop get checked and autodeployed in a different workflow
-      - '!main'
-      - '!develop'
+      - feature/**
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
