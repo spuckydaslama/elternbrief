@@ -6,11 +6,13 @@
 
 	let showChanged: boolean = $state(false);
 	$effect(() => {
-		showChanged = true;
-		const hideChangedTimer = setTimeout(() => (showChanged = false), 2500);
-		return () => {
-			clearTimeout(hideChangedTimer);
-		};
+		if (elternBriefGlobalState.elternbriefText !== '') {
+			showChanged = true;
+			const hideChangedTimer = setTimeout(() => (showChanged = false), 2500);
+			return () => {
+				clearTimeout(hideChangedTimer);
+			};
+		}
 	});
 
 	const maxZeichen = 650;
