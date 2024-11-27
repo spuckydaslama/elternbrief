@@ -13,8 +13,8 @@
 	}
 	let { data }: PageProps = $props();
 
-	onMount(async () => {
-		await fetch('/8b0a5a93.php', {
+	onMount(() => {
+		fetch('/8b0a5a93.php', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
