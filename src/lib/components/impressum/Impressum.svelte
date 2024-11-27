@@ -1,6 +1,6 @@
 <svelte:options runes={true} />
 
-<section class="m-2">
+<section class="mt-8 bg-[#a5ca61] px-8">
 	<h2 class="mb-4 mt-4 text-2xl">Impressum</h2>
 	<p>Sebastian Kurt</p>
 	<p>Rigaer Straße 17, 10249 Berlin</p>

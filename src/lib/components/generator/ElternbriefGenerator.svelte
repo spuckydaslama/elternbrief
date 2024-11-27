@@ -6,6 +6,10 @@
 	import PostkarteVersenden from './v1/PostkarteVersenden.svelte';
 	import EditableElternbrief from './v1/EditableElternbrief.svelte';
 	import NativeShareOrCopyElternbrief from '$lib/components/generator/v1/NativeShareOrCopyElternbrief.svelte';
+	import { Input } from '$lib/components/ui/input';
+	import { BadgeInfoIcon } from 'lucide-svelte';
+	import { Label } from '$lib/components/ui/label';
+	import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group';
 
 	interface Props {
 		elternbriefGruende: { kurz: string; lang: string }[];
@@ -34,34 +38,23 @@
 	});
 </script>
 
-<section class="grid max-w-full grid-cols-1 gap-4 p-1.5 md:grid-cols-2 lg:grid-cols-3">
+<section
+	class="mx-2 my-2 grid max-w-full grid-cols-1 gap-4 p-1.5 md:mx-8 md:grid-cols-2 lg:grid-cols-3"
+>
 	<div>
 		<h2 class="mb-4 mt-4 text-2xl">Textbausteine für deine Postkarte</h2>
-		<form>
-			<div class="m-4">
-				<label class="text-xs text-indigo-600" for="andrede"> Anrede </label>
-				<input class="w-full" type="text" id="andrede" name="anrede" bind:value={anrede} />
+		<form class="flex flex-col gap-6">
+			<div>
+				<Label class="text-indigo-600" for="andrede">Anrede</Label>
+				<Input class="w-full" type="text" id="andrede" name="anrede" bind:value={anrede} />
 			</div>
-			<div class="m-4">
-				<label class="text-xs text-indigo-600" for="ersterSatz">
-					Einleitung <span class="text-indigo-400">
-						- <svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="inline h-4 w-4"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-							/>
-						</svg> Bitte &lt;&gt; mit dem Namen des/der Kindes/r ersetzen
+			<div class="flex flex-col gap-1.5">
+				<Label class="flex items-center gap-1 text-indigo-600" for="ersterSatz">
+					Einleitung <span class="text-xs text-indigo-400">
+						- <BadgeInfoIcon class="inline size-4" /> Bitte &lt;&gt; mit dem Namen des/der Kindes/r ersetzen
 					</span>
-				</label>
-				<input
+				</Label>
+				<Input
 					class="w-full"
 					type="text"
 					id="ersterSatz"
@@ -69,48 +62,35 @@
 					bind:value={ersterSatz}
 				/>
 			</div>
-			<div class="m-4">
-				<span class="text-xs text-indigo-600">Vorlagen für gute Gründe</span>
-				{#each elternbriefGruende as { kurz, lang }, index (index)}
-					<div>
-						<label>
-							<input type="radio" bind:group={grund} name="grund" value={lang} />
-							{kurz}
-						</label>
-					</div>
-				{/each}
+			<div class="flex flex-col gap-2">
+				<Label class="text-indigo-600">Vorlagen für gute Gründe</Label>
+				<RadioGroup bind:value={grund}>
+					{#each elternbriefGruende as { kurz, lang }, index (index)}
+						<div class="flex items-center space-x-2">
+							<RadioGroupItem value={lang} id={`grund-${index}`} />
+							<Label class="cursor-pointer" for={`grund-${index}`}>{kurz}</Label>
+						</div>
+					{/each}
+				</RadioGroup>
 			</div>
-			<div class="m-4">
-				<span class="text-xs text-indigo-600">Schlussworte</span>
-				{#each elternbriefSchlussworte as { kurz, lang }, index (index)}
-					<div>
-						<label>
-							<input type="radio" bind:group={schlussworte} name="schlussworte" value={lang} />
-							{kurz}
-						</label>
-					</div>
-				{/each}
+			<div class="flex flex-col gap-1.5">
+				<Label class="text-indigo-600">Schlussworte</Label>
+				<RadioGroup bind:value={schlussworte}>
+					{#each elternbriefSchlussworte as { kurz, lang }, index (index)}
+						<div class="flex items-center space-x-2">
+							<RadioGroupItem value={lang} id={`schlusswort-${index}`} />
+							<Label class="cursor-pointer" for={`schlusswort-${index}`}>{kurz}</Label>
+						</div>
+					{/each}
+				</RadioGroup>
 			</div>
-			<div class="m-4">
-				<label class="text-xs text-indigo-600" for="abschied">
-					Abschied <span class="text-indigo-400">
-						- <svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="inline h-4 w-4"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-							/>
-						</svg> Bitte &lt;&gt; mit dem Namen des/der Kindes/r ersetzen
+			<div class="flex flex-col gap-1.5">
+				<Label class="flex items-center gap-1 text-indigo-600" for="abschied">
+					Abschied <span class="text-xs text-indigo-400">
+						<BadgeInfoIcon class="inline size-4" /> Bitte &lt;&gt; mit dem Namen des/der Kindes/r ersetzen
 					</span>
-				</label>
-				<input class="w-full" type="text" id="abschied" name="abschied" bind:value={abschied} />
+				</Label>
+				<Input class="w-full" type="text" id="abschied" name="abschied" bind:value={abschied} />
 			</div>
 		</form>
 	</div>

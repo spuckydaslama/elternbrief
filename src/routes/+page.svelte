@@ -7,6 +7,7 @@
 	import Impressum from '$lib/components/impressum/Impressum.svelte';
 	import type { PageData } from './$types';
 	import { onMount } from 'svelte';
+	import { Separator } from '$lib/components/ui/separator';
 
 	interface PageProps {
 		data: PageData;
@@ -44,9 +45,11 @@
 </svelte:head>
 
 <Intro />
+<Separator class="mx-auto my-4 w-4/5" />
 <ElternbriefGenerator
 	elternbriefGruende={data.elternbriefGruende}
 	elternbriefSchlussworte={data.elternbriefSchlussworte}
 />
+<Separator class="mx-auto my-4 w-4/5" />
 <Faq />
 <Impressum />

@@ -2,6 +2,7 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { AccordionContent, AccordionItem, AccordionTrigger } from '$lib/components/ui/accordion';
 
 	interface Props {
 		question: string;
@@ -11,5 +12,7 @@
 	let { question, children }: Props = $props();
 </script>
 
-<h3 class="mb-3 mt-4 text-xl">{question}</h3>
-{@render children?.()}
+<AccordionItem>
+	<AccordionTrigger><h3 class="text-xl">{question}</h3></AccordionTrigger>
+	<AccordionContent>{@render children?.()}</AccordionContent>
+</AccordionItem>
