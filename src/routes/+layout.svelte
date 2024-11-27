@@ -1,9 +1,8 @@
-<script>
-	import '../app.postcss';
+<svelte:options runes={true} />
+
+<script lang="ts">
+	import '../app.css';
+	let { children } = $props();
 </script>
 
-<div class="p-8 flex flex-col min-h-screen">
-	<main class="flex-grow">
-		<slot />
-	</main>
-</div>
+{@render children()}

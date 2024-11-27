@@ -1,7 +1,9 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
-	import { elternbriefText } from '$lib/stores';
+	import { elternBriefGlobalState } from '$lib/ElternbriefGlobalState.svelte';
 
 	/* workaround for not finding the interface. copy of ShareData in lib.dom.d.ts */
 	interface ShareData {
@@ -11,7 +13,7 @@
 		url?: string;
 	}
 
-	let nativeShare: (data?: ShareData | undefined) => Promise<void>;
+	let nativeShare: ((data?: ShareData | undefined) => Promise<void>) | undefined = $state();
 	onMount(async () => {
 		if (window.navigator) {
 			const navigator: Navigator = window.navigator;
@@ -20,13 +22,14 @@
 	});
 
 	const handleShareAction = async () => {
-		await nativeShare({ text: $elternbriefText });
+		if (!nativeShare) return;
+		await nativeShare({ text: elternBriefGlobalState.elternbriefText });
 	};
 
-	let savedToClipboard: boolean;
+	let savedToClipboard: boolean = $state(false);
 	const handleCopyToClipboardClick = () => {
 		if (window.navigator?.clipboard) {
-			window.navigator.clipboard.writeText($elternbriefText);
+			window.navigator.clipboard.writeText(elternBriefGlobalState.elternbriefText);
 			savedToClipboard = true;
 			setTimeout(() => {
 				savedToClipboard = false;
@@ -37,10 +40,10 @@
 
 {#if !!nativeShare}
 	<div>
-		<button class="flex items-center" on:click={handleShareAction}>
+		<button class="flex items-center" onclick={handleShareAction} aria-label="share">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="h-7 w-7 ml-1 btn-icononly-primary"
+				class="ml-1 h-7 w-7 text-yellow-600"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"
@@ -56,12 +59,12 @@
 	</div>
 {:else}
 	<div>
-		<button class="flex items-center" on:click={handleCopyToClipboardClick}>
+		<button class="flex items-center" onclick={handleCopyToClipboardClick}>
 			{#if savedToClipboard}
 				<svg
 					in:fly={{ x: 8 }}
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-7 w-7 ml-1 btn-icononly-primary"
+					class="ml-1 h-7 w-7 text-yellow-600"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
@@ -77,7 +80,7 @@
 				<svg
 					in:fade
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-7 w-7 ml-1 btn-icononly-primary"
+					class="ml-1 h-7 w-7 text-yellow-600"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"

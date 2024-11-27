@@ -1,8 +1,16 @@
-<script>
+<svelte:options runes={true} />
+
+<script lang="ts">
 	import ElternbriefGenerator from '$lib/components/generator/ElternbriefGenerator.svelte';
 	import Faq from '$lib/components/faq/Faq.svelte';
 	import Intro from '$lib/components/intro/Intro.svelte';
 	import Impressum from '$lib/components/impressum/Impressum.svelte';
+	import type { PageData } from './$types';
+
+	interface PageProps {
+		data: PageData;
+	}
+	let { data }: PageProps = $props();
 </script>
 
 <svelte:head>
@@ -24,6 +32,9 @@
 </svelte:head>
 
 <Intro />
-<ElternbriefGenerator />
+<ElternbriefGenerator
+	elternbriefGruende={data.elternbriefGruende}
+	elternbriefSchlussworte={data.elternbriefSchlussworte}
+/>
 <Faq />
 <Impressum />
