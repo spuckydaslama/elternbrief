@@ -2,7 +2,7 @@
 
 <h1 class="my-8 text-center text-4xl">Gib deinem Kind eine Stimme</h1>
 <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-	<div class="lg:col-span-2">
+	<div class="m-2 lg:col-span-2">
 		<div>
 			<h2 class="caps-small mr-1 inline text-2xl text-indigo-800">Warum?</h2>
 			<p class="inline">
