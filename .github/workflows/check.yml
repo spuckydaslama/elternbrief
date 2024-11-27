@@ -3,36 +3,28 @@ name: Check the Code
 on:
   push:
     branches:
-      # main and develop get checked and autodeployed in a different workflow
-      - '!main'
-      - '!develop'
+      - feature/**
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '18.x'
-  PNPM_VERSION: '7'
+  NODE_VERSION: '22.x'
 
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: ${{ env.PNPM_VERSION }}
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
-
+          cache: 'pnpm'
       - name: 'Lint'
         run: |
+          pnpm install --frozen-lockfile
           pnpm lint
           pnpm check

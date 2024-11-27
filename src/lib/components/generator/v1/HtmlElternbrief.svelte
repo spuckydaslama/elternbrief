@@ -1,9 +1,15 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import type { Elternbrief } from './elternbriefTypes';
 	import { BriefParagraph } from './elternbriefTypes';
 	import { BriefNewline } from './elternbriefTypes';
 
-	export let elternbrief: Elternbrief;
+	interface Props {
+		elternbrief: Elternbrief;
+	}
+
+	let { elternbrief }: Props = $props();
 </script>
 
 {#each elternbrief as briefElement}

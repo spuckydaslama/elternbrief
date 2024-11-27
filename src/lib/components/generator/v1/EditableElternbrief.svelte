@@ -1,31 +1,34 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
 	import { blur } from 'svelte/transition';
-	import { elternbriefText } from '$lib/stores';
-	import { onDestroy } from 'svelte';
+	import { elternBriefGlobalState } from '$lib/ElternbriefGlobalState.svelte.js';
 
-	let showChanged: boolean;
-	let hideChangedTimer: ReturnType<typeof setTimeout>;
-	const elternbriefTextUnsubscribe = elternbriefText.subscribe(() => {
-		showChanged = true;
-		if (hideChangedTimer) {
-			clearTimeout(hideChangedTimer);
+	let showChanged: boolean = $state(false);
+	$effect(() => {
+		if (elternBriefGlobalState.elternbriefText !== '') {
+			showChanged = true;
+			const hideChangedTimer = setTimeout(() => (showChanged = false), 2500);
+			return () => {
+				clearTimeout(hideChangedTimer);
+			};
 		}
-		hideChangedTimer = setTimeout(() => (showChanged = false), 2500);
 	});
-	onDestroy(elternbriefTextUnsubscribe);
 
 	const maxZeichen = 650;
-	$: zeichenUebrig = maxZeichen - $elternbriefText.replace(/[\n\r]/g, '').length;
+	let zeichenUebrig = $derived(
+		maxZeichen - elternBriefGlobalState.elternbriefText.replace(/[\n\r]/g, '').length
+	);
 </script>
 
 <div>
 	<div>
 		{#if zeichenUebrig >= 0}
-			<span class="text-xs text-indigo-600 flex-1">
+			<span class="flex-1 text-xs text-indigo-600">
 				Noch {zeichenUebrig} von maximal {maxZeichen} Zeichen übrig
 			</span>
 		{:else}
-			<span class="text-xs text-red-600 flex-1">
+			<span class="flex-1 text-xs text-red-600">
 				Zuviele Zeichen: {maxZeichen - zeichenUebrig} von maximal {maxZeichen} Zeichen
 			</span>
 		{/if}
@@ -36,13 +39,13 @@
 			class:bg-red-200={zeichenUebrig < 0}
 			class="w-full"
 			rows="12"
-			bind:value={$elternbriefText}
-		/>
+			bind:value={elternBriefGlobalState.elternbriefText}
+		></textarea>
 		{#if showChanged}
 			<svg
 				transition:blur
 				xmlns="http://www.w3.org/2000/svg"
-				class="h-6 w-6 absolute top-1 right-1"
+				class="absolute right-1 top-1 h-6 w-6"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"

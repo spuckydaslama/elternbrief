@@ -1,38 +1,42 @@
+<svelte:options runes={true} />
+
 <script lang="ts">
-	import { elternbriefGruende, elternbriefSchlussworte, elternbriefText } from '$lib/stores';
-	import type { Elternbrief } from './v1/elternbriefTypes';
+	import { elternBriefGlobalState } from '../../ElternbriefGlobalState.svelte';
 	import { createElternbrief, toSharableText } from './v1/elternbrief';
 	import PostkarteVersenden from './v1/PostkarteVersenden.svelte';
 	import EditableElternbrief from './v1/EditableElternbrief.svelte';
 	import NativeShareOrCopyElternbrief from '$lib/components/generator/v1/NativeShareOrCopyElternbrief.svelte';
 
-	let anrede = 'Liebe Oma, Lieber Opa';
-	let ersterSatz = 'Hier schreibt euch <Name-des/r-Kindes/r>.';
+	interface Props {
+		elternbriefGruende: { kurz: string; lang: string }[];
+		elternbriefSchlussworte: { kurz: string; lang: string }[];
+	}
+	const { elternbriefGruende, elternbriefSchlussworte }: Props = $props();
+
+	let anrede = $state('Liebe Oma, Lieber Opa');
+	let ersterSatz = $state('Hier schreibt euch <Name-des/r-Kindes/r>.');
 	const festeEinleitung =
 		'Die Zukunft steht bevor. Meine Stimme ist nicht vertreten. Doch es geht es um meine Zukunft. ';
-	let grund = $elternbriefGruende[0].lang;
-	let schlussworte = $elternbriefSchlussworte[0].lang;
-	let abschied = 'Seid fest umarmt, Euer <Name-des/r-Kindes/r>.';
+	let grund = $state(elternbriefGruende[0].lang);
+	let schlussworte = $state(elternbriefSchlussworte[0].lang);
+	let abschied = $state('Seid fest umarmt, Euer <Name-des/r-Kindes/r>.');
 
-	let elternbrief: Elternbrief;
-	$: elternbrief = createElternbrief({
-		anrede,
-		ersterSatz,
-		festeEinleitung,
-		grund,
-		schlussworte,
-		abschied
+	$effect.pre(() => {
+		const elternbrief = createElternbrief({
+			anrede,
+			ersterSatz,
+			festeEinleitung,
+			grund,
+			schlussworte,
+			abschied
+		});
+		elternBriefGlobalState.elternbriefText = toSharableText(elternbrief);
 	});
-	$: {
-		if (elternbrief) {
-			$elternbriefText = toSharableText(elternbrief);
-		}
-	}
 </script>
 
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-full p-1.5">
+<section class="grid max-w-full grid-cols-1 gap-4 p-1.5 md:grid-cols-2 lg:grid-cols-3">
 	<div>
-		<h2 class="text-2xl mt-4 mb-4">Textbausteine für deine Postkarte</h2>
+		<h2 class="mb-4 mt-4 text-2xl">Textbausteine für deine Postkarte</h2>
 		<form>
 			<div class="m-4">
 				<label class="text-xs text-indigo-600" for="andrede"> Anrede </label>
@@ -43,7 +47,7 @@
 					Einleitung <span class="text-indigo-400">
 						- <svg
 							xmlns="http://www.w3.org/2000/svg"
-							class="h-4 w-4 inline"
+							class="inline h-4 w-4"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
@@ -67,7 +71,7 @@
 			</div>
 			<div class="m-4">
 				<span class="text-xs text-indigo-600">Vorlagen für gute Gründe</span>
-				{#each $elternbriefGruende as { kurz, lang }, index (index)}
+				{#each elternbriefGruende as { kurz, lang }, index (index)}
 					<div>
 						<label>
 							<input type="radio" bind:group={grund} name="grund" value={lang} />
@@ -78,7 +82,7 @@
 			</div>
 			<div class="m-4">
 				<span class="text-xs text-indigo-600">Schlussworte</span>
-				{#each $elternbriefSchlussworte as { kurz, lang }, index (index)}
+				{#each elternbriefSchlussworte as { kurz, lang }, index (index)}
 					<div>
 						<label>
 							<input type="radio" bind:group={schlussworte} name="schlussworte" value={lang} />
@@ -92,7 +96,7 @@
 					Abschied <span class="text-indigo-400">
 						- <svg
 							xmlns="http://www.w3.org/2000/svg"
-							class="h-4 w-4 inline"
+							class="inline h-4 w-4"
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke="currentColor"
@@ -111,7 +115,7 @@
 		</form>
 	</div>
 	<div class="lg:col-span-2">
-		<h2 class="mt-4 mb-2 text-2xl flex items-center">
+		<h2 class="mb-2 mt-4 flex items-center text-2xl">
 			Der Text der Postkarte <NativeShareOrCopyElternbrief />
 		</h2>
 		<div class="p-1.5">

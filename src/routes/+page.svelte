@@ -1,8 +1,28 @@
-<script>
+<svelte:options runes={true} />
+
+<script lang="ts">
 	import ElternbriefGenerator from '$lib/components/generator/ElternbriefGenerator.svelte';
 	import Faq from '$lib/components/faq/Faq.svelte';
 	import Intro from '$lib/components/intro/Intro.svelte';
 	import Impressum from '$lib/components/impressum/Impressum.svelte';
+	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
+
+	interface PageProps {
+		data: PageData;
+	}
+	let { data }: PageProps = $props();
+
+	onMount(async () => {
+		await fetch('/8b0a5a93.php', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json; charset=utf-8'
+			},
+			body: JSON.stringify({ referrer: document.referrer })
+		});
+	});
 </script>
 
 <svelte:head>
@@ -24,6 +44,9 @@
 </svelte:head>
 
 <Intro />
-<ElternbriefGenerator />
+<ElternbriefGenerator
+	elternbriefGruende={data.elternbriefGruende}
+	elternbriefSchlussworte={data.elternbriefSchlussworte}
+/>
 <Faq />
 <Impressum />
