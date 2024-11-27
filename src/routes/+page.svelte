@@ -6,11 +6,22 @@
 	import Intro from '$lib/components/intro/Intro.svelte';
 	import Impressum from '$lib/components/impressum/Impressum.svelte';
 	import type { PageData } from './$types';
+	import { onMount } from 'svelte';
 
 	interface PageProps {
 		data: PageData;
 	}
 	let { data }: PageProps = $props();
+
+	onMount(async () => {
+		await fetch('/8b0a5a93.php', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json; charset=utf-8'
+			}
+		});
+	});
 </script>
 
 <svelte:head>
