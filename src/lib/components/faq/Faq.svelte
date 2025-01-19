@@ -64,16 +64,8 @@
 		<FaqQuestionAndAnswer question="Gibt es noch andere Wege den Kindern eine Stimme zu geben?">
 			<ul class="ml-2 list-inside list-disc">
 				<li>
-					<ExternalLink href="https://www.enkelkinderbriefe.de/">Enkelkinderbriefe</ExternalLink> - Fix
-					einen Brief erstellen
-				</li>
-				<li>
 					<ExternalLink href="https://wir-stimmen-zusammen.de/">Wir stimmen zusammen</ExternalLink> -
 					Viele Argumentationen und anderes Material
-				</li>
-				<li>
-					<ExternalLink href="https://politpostulate.de/">PolitPOSTulate</ExternalLink>
-					- vorgedruckte Postkarten
 				</li>
 			</ul>
 		</FaqQuestionAndAnswer>
