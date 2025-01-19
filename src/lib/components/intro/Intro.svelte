@@ -1,40 +1,45 @@
 <svelte:options runes={true} />
 
-<h1 class="my-8 text-center text-4xl">Gib deinem Kind eine Stimme</h1>
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-	<div class="m-2 lg:col-span-2">
-		<div>
-			<h2 class="caps-small mr-1 inline text-2xl text-indigo-800">Warum?</h2>
-			<p class="inline">
-				Die Zukunft steht bevor, Kinder haben wenig Einfluss darauf. Wir wollen ihnen eine Stimme
-				verleihen.
-			</p>
-		</div>
-		<div>
-			<h2 class="caps-small mr-1 inline text-2xl text-indigo-800">Was?</h2>
-			<p class="inline">
-				Schicke im Namen deiner Kinder Postkarten (ja, du darfst mehrfach) an Großeltern, Tanten und
-				Onkel.
-			</p>
-		</div>
-		<h2 class="caps-small mr-1 block text-2xl text-indigo-800">Wie?</h2>
-		<ul class="ml-3 list-inside list-disc">
+<script lang="ts">
+	import QuestionCard from '$lib/components/intro/QuestionCard.svelte';
+</script>
+
+<div class="flex justify-center">
+	<picture>
+		<source srcset="postkartenmotiv.avif" type="image/avif" />
+		<img class="md:max-h-96" src="postkartenmotiv.jpg" alt="Postkartenmotiv" />
+	</picture>
+</div>
+<h1 class="mb-4 text-center text-4xl">Stimme für Kinder</h1>
+<h2 class="mb-4 text-center text-2xl">Gebt den kommenden Generationen eure Stimmen</h2>
+<section class="mx-2 my-2 grid grid-cols-1 gap-2 md:mx-8 md:grid-cols-3">
+	<QuestionCard title="Warum?">
+		<p>
+			Die Zukunft steht bevor, Kinder und Jugendliche haben wenig Einfluss darauf. Wir wollen ihnen
+			eine Stimme verleihen.
+		</p>
+	</QuestionCard>
+	<QuestionCard title="Was?">
+		<p>
+			Schicke Postkarten an Großeltern, Tanten/Onkel, Freunde oder auch deine Eltern. Und ja, du
+			darfst mehrmals senden!
+		</p>
+	</QuestionCard>
+	<QuestionCard title="Wie?">
+		<ul class="ml-3 list-disc">
 			<li>
-				Passe die Briefvorlage so an, um im Namen deiner Kinder eine Botschaft an Ältere zu senden.
-				Verwende die Namen, dann wirkt es viel persönlicher!
+				Passe die Briefvorlage an, um eine Botschaft an all jene zu senden, die noch überzeugt
+				werden können.
 			</li>
-			<li>Wähle Themen aus, auf die die Angesprochenen reagieren, sich angesprochen fühlen.</li>
+			<li>
+				Wähle Themen aus, auf die die Angesprochenen reagieren, sich angesprochen fühlen.
+				Personalisiere die Texte durch Namen und jeweils passende Botschaften.
+			</li>
 			<li>
 				Versende den Text als Postkarte (kostenlos!) oder auf einem passenden Weg - E-Mail,
-				WhatsApp. Am besten so wie es wirklich ankommt.
+				WhatsApp, Facebook, Signal, Telegram. Am besten so wie es wirklich ankommt.
 			</li>
-			<li>Sprich mit den Angeschriebenen.</li>
+			<li>Sprich mit den Angeschriebenen. Fordere sie auf wählen zu gehen.</li>
 		</ul>
-	</div>
-	<div class="order-first mt-2 self-center md:order-none md:ml-2 md:mt-0">
-		<picture>
-			<source srcset="postkartenmotiv.avif" type="image/avif" />
-			<img class="border md:max-h-64" src="postkartenmotiv.jpg" alt="Postkartenmotiv" />
-		</picture>
-	</div>
+	</QuestionCard>
 </section>

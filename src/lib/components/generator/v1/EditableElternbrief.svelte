@@ -3,6 +3,8 @@
 <script lang="ts">
 	import { blur } from 'svelte/transition';
 	import { elternBriefGlobalState } from '$lib/ElternbriefGlobalState.svelte.js';
+	import { Textarea } from '$lib/components/ui/textarea';
+	import { Label } from '$lib/components/ui/label';
 
 	let showChanged: boolean = $state(false);
 	$effect(() => {
@@ -22,25 +24,22 @@
 </script>
 
 <div>
-	<div>
-		{#if zeichenUebrig >= 0}
-			<span class="flex-1 text-xs text-indigo-600">
-				Noch {zeichenUebrig} von maximal {maxZeichen} Zeichen übrig
-			</span>
-		{:else}
-			<span class="flex-1 text-xs text-red-600">
-				Zuviele Zeichen: {maxZeichen - zeichenUebrig} von maximal {maxZeichen} Zeichen
-			</span>
-		{/if}
-	</div>
+	{#if zeichenUebrig >= 0}
+		<Label class="flex-1 text-indigo-600">
+			Noch {zeichenUebrig} von maximal {maxZeichen} Zeichen übrig
+		</Label>
+	{:else}
+		<Label class="flex-1 text-red-600">
+			Zuviele Zeichen: {maxZeichen - zeichenUebrig} von maximal {maxZeichen} Zeichen
+		</Label>
+	{/if}
 	<div class="relative">
-		<textarea
+		<Textarea
 			aria-label="Elternbrieftext"
-			class:bg-red-200={zeichenUebrig < 0}
 			class="w-full"
-			rows="12"
+			rows={12}
 			bind:value={elternBriefGlobalState.elternbriefText}
-		></textarea>
+		/>
 		{#if showChanged}
 			<svg
 				transition:blur
