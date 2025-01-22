@@ -17,22 +17,21 @@
 	}
 	const { elternbriefGruende, elternbriefSchlussworte }: Props = $props();
 
-	let anrede = $state('Liebe Oma, Lieber Opa');
-	let ersterSatz = $state('Hier schreibt euch <Name-des/r-Kindes/r>.');
-	const festeEinleitung =
-		'Die Zukunft steht bevor. Meine Stimme ist nicht vertreten. Doch es geht es um meine Zukunft. ';
+	let anrede = $state('Liebe(r) [Adressat]');
+	let ersterSatz = $state('hier schreibt dir dein(e) [Absenderrolle und Absendername]');
 	let grund = $state(elternbriefGruende[0].lang);
 	let schlussworte = $state(elternbriefSchlussworte[0].lang);
-	let abschied = $state('Seid fest umarmt, Euer <Name-des/r-Kindes/r>.');
+	let abschied = $state('Liebe Grüße [Name(n)]');
+	let ps = $state('PS: Bitte geh(t) wählen!');
 
 	$effect.pre(() => {
 		const elternbrief = createElternbrief({
 			anrede,
 			ersterSatz,
-			festeEinleitung,
 			grund,
 			schlussworte,
-			abschied
+			abschied,
+			ps
 		});
 		elternBriefGlobalState.elternbriefText = toSharableText(elternbrief);
 	});

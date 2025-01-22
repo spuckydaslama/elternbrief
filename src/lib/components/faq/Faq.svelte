@@ -26,12 +26,28 @@
 			</p>
 		</FaqQuestionAndAnswer>
 
-		<FaqQuestionAndAnswer question="Kosten das Versenden der Postkarte etwas?">
+		<FaqQuestionAndAnswer question="Kostet das Versenden der Postkarte etwas?">
 			<p>
 				Nein. Für dich ist der Versand kostenlos. Wir prüfen den Inhalt er erstellten Karten und
 				geben diese i.d.R. frei für den Versand. Wer noch mehr Stimmen für Kinder als Postkarte
 				ermöglichen will, unterstützt uns mit einer
 				<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">Spende</ExternalLink>!
+			</p>
+		</FaqQuestionAndAnswer>
+
+		<FaqQuestionAndAnswer question="Was passiert mit meinen Daten bzw. meiner Adresse?">
+			<p>
+				Wir verwenden die eingebenen Daten ausschließlich zum Versand der Postkarte. Dafür geben wir
+				diese per automatisierter Schnittstelle an den Versanddienstleister weiter. Im Anschluss
+				werden die Daten gelöscht. Im Aktionszeitraum zählen wir mit, wie viele Karten mit welchen
+				Textbausteinen versandt wurden. Dies geschieht ohne Verwendung von persönlichen Daten.
+			</p>
+		</FaqQuestionAndAnswer>
+
+		<FaqQuestionAndAnswer question="Werden alle Postkartentexte versandt?">
+			<p>
+				Nein, wir prüfen halbautomatisch auf Missbrauch und unrechtmäßige Verwendung. Die so
+				ausgefilterten Entwürfe werden nicht als Postkarte verschickt.
 			</p>
 		</FaqQuestionAndAnswer>
 

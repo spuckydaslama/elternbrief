@@ -20,10 +20,16 @@
 		</p>
 	</QuestionCard>
 	<QuestionCard title="Was?">
-		<p>
-			Schicke Postkarten an Großeltern, Tanten/Onkel, Freunde oder auch deine Eltern. Und ja, du
-			darfst mehrmals senden!
-		</p>
+		<div class="flex flex-col gap-2">
+			<p>
+				Schicke Postkarten an Großeltern, Tanten/Onkel, Freunde oder auch deine Eltern. Und ja, du
+				darfst mehrmals senden!
+			</p>
+			<p>
+				Eine Kampagne der Grünen? Ja, wir machen diese Aktion, um Stimmen für die Grünen zu sammeln.
+				Der Postkartentext kann aber auch neutral gestaltet werden.
+			</p>
+		</div>
 	</QuestionCard>
 	<QuestionCard title="Wie?">
 		<ul class="ml-3 list-disc">
