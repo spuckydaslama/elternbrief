@@ -1,24 +1,35 @@
 <svelte:options runes={true} />
 
 <script lang="ts">
-	import { slide, fade } from 'svelte/transition';
+	import { Loader, Mail, Send } from 'lucide-svelte';
+	import {
+		Drawer,
+		DrawerTrigger,
+		DrawerContent,
+		DrawerHeader,
+		DrawerTitle,
+		DrawerFooter,
+		DrawerClose
+	} from '$lib/components/ui/drawer';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { cn } from '$lib/utils';
+	import { Label } from '$lib/components/ui/label';
+	import { Input } from '$lib/components/ui/input';
 	import { elternBriefGlobalState } from '../../../ElternbriefGlobalState.svelte';
-
-	let postkarteVersendet: boolean = $state(false);
-	let formularGeoffnet: boolean = $state(false);
-	const handleButtonClick = () => {
-		formularGeoffnet = !formularGeoffnet;
-		postkarteVersendet = false;
-	};
 
 	let empfaenger: string = $state('');
 	let zusatz: string = $state('');
 	let strasse_hausnummer: string = $state('');
 	let plz_ort: string = $state('');
+	let filledOut = $derived(empfaenger && strasse_hausnummer && plz_ort);
+	let open = $state(false);
+	let isSending = $state(false);
 
-	const handleSubmit = async (event: MouseEvent) => {
+	let form: HTMLFormElement;
+
+	const handleSubmit = async () => {
+		form.reportValidity();
 		if (empfaenger && strasse_hausnummer && plz_ort) {
-			event.preventDefault();
 			const payload = {
 				grusstext: elternBriefGlobalState.elternbriefText,
 				adresse: {
@@ -29,144 +40,98 @@
 					adresszeile5: 'Deutschland'
 				}
 			};
-			await fetch('/postkarte.php', {
-				method: 'POST',
-				headers: {
-					Accept: 'application/json',
-					'Content-Type': 'application/json; charset=utf-8'
-				},
-				body: JSON.stringify(payload)
-			});
+			try {
+				isSending = true;
+				await fetch('/postkarte.php', {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json; charset=utf-8'
+					},
+					body: JSON.stringify(payload)
+				});
 
-			empfaenger = '';
-			zusatz = '';
-			strasse_hausnummer = '';
-			plz_ort = '';
-
-			formularGeoffnet = false;
-			setTimeout(() => (postkarteVersendet = true), 500);
+				empfaenger = '';
+				zusatz = '';
+				strasse_hausnummer = '';
+				plz_ort = '';
+				open = false;
+			} finally {
+				isSending = false;
+			}
 		}
 	};
 </script>
 
-<div>
-	<button
-		class:bg-yellow-600={!formularGeoffnet}
-		class:hover:bg-yellow-700={!formularGeoffnet}
-		class:border-yellow-600={!formularGeoffnet}
-		class:bg-gray-500={formularGeoffnet}
-		class:hover:bg-gray-600={formularGeoffnet}
-		class:border-gray-500={formularGeoffnet}
-		class="flex w-full items-center justify-center whitespace-nowrap rounded-lg border-2 p-2 text-xl text-white focus:border-black focus:outline-none md:w-auto"
-		onclick={handleButtonClick}
-	>
+<Drawer bind:open>
+	<DrawerTrigger class={cn(buttonVariants({ variant: 'default' }), 'w-full text-lg sm:w-auto')}>
 		Als Postkarte versenden
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="ml-1 h-8 w-8"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke="currentColor"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-			/>
-		</svg>
-	</button>
-	{#if postkarteVersendet}
-		<div class="flex text-sm text-green-600" transition:fade>
-			<span>Postkarte erfolgreich in Auftrag gegeben</span>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-5 w-5"
-				viewBox="0 0 20 20"
-				fill="currentColor"
-			>
-				<path
-					fill-rule="evenodd"
-					d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-					clip-rule="evenodd"
-				/>
-			</svg>
-		</div>
-	{/if}
-	{#if formularGeoffnet}
-		<div transition:slide>
-			<form class="mt-3 w-full space-y-2 md:w-auto">
-				<div>
-					<label class="required block" for="empfaenger">Empfänger</label>
-					<input
-						class="w-full md:w-auto"
-						bind:value={empfaenger}
-						id="empfaenger"
-						name="empfaenger"
-						type="text"
-						required
-					/>
+		<Mail class=" h-6 w-6" />
+	</DrawerTrigger>
+	<DrawerContent>
+		<div class="mx-auto w-full md:w-1/2 xl:w-1/3">
+			<DrawerHeader>
+				<DrawerTitle class="text-center text-xl">Text als Postkarte versenden</DrawerTitle>
+			</DrawerHeader>
+			<div class="p-4">
+				<div class="flex items-center justify-center">
+					<form bind:this={form} class="mt-3 flex w-full flex-col items-stretch gap-4">
+						<div class="space-y-1">
+							<Label class="after:content-['_*']" for="empfaenger">Empfänger</Label>
+							<Input
+								bind:value={empfaenger}
+								id="empfaenger"
+								name="empfaenger"
+								type="text"
+								required
+							/>
+						</div>
+						<div class="space-y-1">
+							<Label for="zusatz">Zusatz</Label>
+							<Input bind:value={zusatz} id="zusatz" name="zusatz" type="text" />
+						</div>
+						<div class="space-y-1">
+							<Label class="after:content-['_*']" for="strasse_hausnummer">
+								Straße und Hausnummer
+							</Label>
+							<Input
+								bind:value={strasse_hausnummer}
+								id="strasse_hausnummer"
+								name="strasse_hausnummer"
+								type="text"
+								required
+							/>
+						</div>
+						<div>
+							<Label class="after:content-['_*']" for="plz_ort">PLZ und Stadt</Label>
+							<Input bind:value={plz_ort} id="plz_ort" name="plz_ort" type="text" required />
+						</div>
+					</form>
 				</div>
-				<div>
-					<label class="block" for="zusatz">Zusatz</label>
-					<input
-						class="w-full md:w-auto"
-						bind:value={zusatz}
-						id="zusatz"
-						name="zusatz"
-						type="text"
-					/>
-				</div>
-				<div>
-					<label class="required block" for="strasse_hausnummer">Straße und Hausnummer</label>
-					<input
-						class="w-full md:w-auto"
-						bind:value={strasse_hausnummer}
-						id="strasse_hausnummer"
-						name="strasse_hausnummer"
-						type="text"
-						required
-					/>
-				</div>
-				<div>
-					<label class="required block" for="plz_ort">PLZ und Stadt</label>
-					<input
-						class="w-full md:w-auto"
-						bind:value={plz_ort}
-						id="plz_ort"
-						name="plz_ort"
-						type="text"
-						required
-					/>
-				</div>
-				<button
-					type="submit"
+			</div>
+			<DrawerFooter>
+				<Button
+					size="lg"
+					class={cn('group text-lg', isSending && 'pointer-events-none animate-pulse')}
 					onclick={handleSubmit}
-					class="flex w-full items-center justify-center whitespace-nowrap rounded-lg border-2 border-yellow-600 bg-yellow-600 p-2 text-xl text-white hover:bg-yellow-700 focus:border-black focus:outline-none md:w-auto"
 				>
-					Jetzt verschicken
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="ml-1 h-8 w-8"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-						/>
-					</svg>
-				</button>
-			</form>
+					{#if isSending}
+						Wird versendet <Loader class="animate-spin" />
+					{:else}
+						Versenden <Send class={cn(filledOut && 'animate-bounce group-hover:animate-none')} />
+					{/if}
+				</Button>
+				<DrawerClose
+					disabled={isSending}
+					class={cn(
+						buttonVariants({ variant: 'secondary', size: 'lg' }),
+						'text-lg',
+						isSending && 'pointer-events-none'
+					)}
+				>
+					Abbrechen
+				</DrawerClose>
+			</DrawerFooter>
 		</div>
-	{/if}
-</div>
-
-<style>
-	.required:after {
-		content: ' *';
-	}
-</style>
+	</DrawerContent>
+</Drawer>
