@@ -17,7 +17,7 @@
 		}
 	});
 
-	const maxZeichen = 650;
+	const maxZeichen = 700;
 	let zeichenUebrig = $derived(
 		maxZeichen - elternBriefGlobalState.elternbriefText.replace(/[\n\r]/g, '').length
 	);
@@ -36,7 +36,7 @@
 	<div class="relative">
 		<Textarea
 			aria-label="Elternbrieftext"
-			class="w-full"
+			class="w-full text-base"
 			rows={12}
 			bind:value={elternBriefGlobalState.elternbriefText}
 		/>

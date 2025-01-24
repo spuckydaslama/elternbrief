@@ -64,7 +64,9 @@
 </script>
 
 <Drawer bind:open>
-	<DrawerTrigger class={cn(buttonVariants({ variant: 'default' }), 'w-full text-lg sm:w-auto')}>
+	<DrawerTrigger
+		class={cn(buttonVariants({ variant: 'postkarteCta' }), 'w-full text-lg sm:w-auto')}
+	>
 		Als Postkarte versenden
 		<Mail class=" h-6 w-6" />
 	</DrawerTrigger>
@@ -111,6 +113,7 @@
 			</div>
 			<DrawerFooter>
 				<Button
+					variant="postkarteCta"
 					size="lg"
 					class={cn('group text-lg', isSending && 'pointer-events-none animate-pulse')}
 					onclick={handleSubmit}

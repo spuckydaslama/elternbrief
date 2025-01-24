@@ -47,8 +47,8 @@
 <Intro />
 <Separator class="mx-auto my-4 w-4/5" />
 <ElternbriefGenerator
-	elternbriefGruende={data.elternbriefGruende}
-	elternbriefSchlussworte={data.elternbriefSchlussworte}
+	sorgenDerAelteren={data.sorgenDerAelteren}
+	sorgenDerJuengeren={data.sorgenDerJuengeren}
 />
 <Separator class="mx-auto my-4 w-4/5" />
 <Faq />
