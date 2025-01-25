@@ -3,7 +3,6 @@
 <script lang="ts">
 	import { blur } from 'svelte/transition';
 	import { elternBriefGlobalState } from '$lib/ElternbriefGlobalState.svelte.js';
-	import { Textarea } from '$lib/components/ui/textarea';
 	import { Label } from '$lib/components/ui/label';
 
 	let showChanged: boolean = $state(false);
@@ -34,12 +33,12 @@
 		</Label>
 	{/if}
 	<div class="relative">
-		<Textarea
+		<div
 			aria-label="Elternbrieftext"
-			class="w-full text-base"
-			rows={12}
-			bind:value={elternBriefGlobalState.elternbriefText}
-		/>
+			class="h-full w-full rounded-md border border-input p-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+			contenteditable="plaintext-only"
+			bind:textContent={elternBriefGlobalState.elternbriefText}
+		></div>
 		{#if showChanged}
 			<svg
 				transition:blur
