@@ -7,7 +7,7 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Input } from '$lib/components/ui/input';
 	import { elternBriefGlobalState } from '../../../ElternbriefGlobalState.svelte';
-	import { Dialog, DialogContent, DialogTrigger, DialogFooter } from '$lib/components/ui/dialog';
+	import { Dialog, DialogContent, DialogTrigger } from '$lib/components/ui/dialog';
 
 	let empfaenger: string = $state('');
 	let zusatz: string = $state('');
@@ -62,19 +62,21 @@
 		Als Postkarte versenden
 		<Mail class="h-6 w-6" />
 	</DialogTrigger>
-	<DialogContent class="h-screen max-w-full overflow-auto text-xs sm:h-auto sm:max-w-lg">
+	<DialogContent class="h-dvh w-full overflow-auto text-xs sm:h-auto sm:max-w-lg sm:text-base">
 		<div class="flex items-center justify-center">
 			<form bind:this={form} class="mt-3 flex w-full flex-col items-stretch gap-4">
 				<div class="space-y-1">
-					<Label class="after:content-['_*']" for="empfaenger">Empfänger</Label>
+					<Label class="text-indigo-600 after:content-['_*']" for="empfaenger">Empfänger</Label>
 					<Input bind:value={empfaenger} id="empfaenger" name="empfaenger" type="text" required />
 				</div>
-				<div class="space-y-1">
+				<div class="space-y-1 text-indigo-600">
 					<Label for="zusatz">Zusatz</Label>
 					<Input bind:value={zusatz} id="zusatz" name="zusatz" type="text" />
 				</div>
 				<div class="space-y-1">
-					<Label class="after:content-['_*']" for="strasse_hausnummer">Straße und Hausnummer</Label>
+					<Label class="text-indigo-600 after:content-['_*']" for="strasse_hausnummer"
+						>Straße und Hausnummer</Label
+					>
 					<Input
 						bind:value={strasse_hausnummer}
 						id="strasse_hausnummer"
@@ -83,27 +85,25 @@
 						required
 					/>
 				</div>
-				<div>
-					<Label class="after:content-['_*']" for="plz_ort">PLZ und Stadt</Label>
+				<div class="space-y-1">
+					<Label class="text-indigo-600 after:content-['_*']" for="plz_ort">PLZ und Stadt</Label>
 					<Input bind:value={plz_ort} id="plz_ort" name="plz_ort" type="text" required />
 				</div>
 			</form>
 		</div>
-		<DialogFooter>
-			<Button
-				variant="postkarteCta"
-				size="lg"
-				class={cn('group text-lg', isSending && 'pointer-events-none animate-pulse')}
-				onclick={handleSubmit}
-			>
-				{#if isSending}
-					Wird versendet <Loader class="animate-spin" />
-				{:else}
-					Postkarte jetzt versenden <Send
-						class={cn(filledOut && 'animate-bounce group-hover:animate-none')}
-					/>
-				{/if}
-			</Button>
-		</DialogFooter>
+		<Button
+			variant="postkarteCta"
+			size="lg"
+			class={cn('group text-base sm:text-lg', isSending && 'pointer-events-none animate-pulse')}
+			onclick={handleSubmit}
+		>
+			{#if isSending}
+				Wird versendet <Loader class="animate-spin" />
+			{:else}
+				Postkarte versenden <Send
+					class={cn(filledOut && 'animate-bounce group-hover:animate-none')}
+				/>
+			{/if}
+		</Button>
 	</DialogContent>
 </Dialog>
