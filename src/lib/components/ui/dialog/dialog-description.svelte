@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { Drawer as DrawerPrimitive } from "vaul-svelte";
+	import { Dialog as DialogPrimitive } from "bits-ui";
 	import { cn } from "$lib/utils.js";
 
 	let {
 		ref = $bindable(null),
 		class: className,
 		...restProps
-	}: DrawerPrimitive.DescriptionProps = $props();
+	}: DialogPrimitive.DescriptionProps = $props();
 </script>
 
-<DrawerPrimitive.Description
+<DialogPrimitive.Description
 	bind:ref
 	class={cn("text-muted-foreground text-sm", className)}
 	{...restProps}
