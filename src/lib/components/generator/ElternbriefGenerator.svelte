@@ -19,13 +19,11 @@
 	}
 	const { sorgenDerAelteren, sorgenDerJuengeren }: Props = $props();
 
-	let anrede = $state('Liebe Oma, Lieber Opa,');
-	let einleitung = $state('hier schreibt euch <Name-des/r-Kindes/r>.');
+	let anrede = $state('Liebe <Empfänger:in>,');
+	let einleitung = $state('hier schreibt Absender:in.');
 	const ersterSatz =
-		'Vielleicht wunderst du dich, dass ich dir schreibe. Ich habe ein wichtiges Anliegen: Ich wünsche mir so sehr, dass du wählen gehst.' +
-		' Ich mache mir Sorgen um unsere Zukunft.\n' +
-		'Am schlimmsten finde ich es, dass ausgerechnet die junge Generation nicht wählen kann, sie sind doch diejenigen, ' +
-		'die am längsten mit den Folgen der Wahl leben müssen.';
+		'Vielleicht wunderst du dich, dass ich dir schreibe. Ich habe ein wichtiges Anliegen: Ich wünsche mir so sehr, dass du wählen gehst. Ich mache mir Sorgen um unsere Zukunft.\n' +
+		'Am schlimmsten finde ich es, dass ausgerechnet die junge Generation nicht wählen kann, sie sind doch diejenigen, die am längsten mit den Folgen der Wahl leben müssen.';
 	let selectedSorgenDerAelteren = $state<Set<string>>(new SvelteSet([sorgenDerAelteren[0].lang]));
 	let customSorgeDerAelteren = $state('');
 	let missingSorgenDerAelteren = $derived(
@@ -43,7 +41,7 @@
 	);
 
 	let ps = $state('Deine Stimme ist ein kostbares Geschenk für unsere Zukunft!');
-	let abschied = $state('Seid fest umarmt, Euer <Namen>.');
+	let abschied = $state('Deine Absender:in');
 
 	$effect.pre(() => {
 		const elternbrief = createElternbrief({

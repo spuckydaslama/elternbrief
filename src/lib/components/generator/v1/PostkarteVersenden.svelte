@@ -68,10 +68,10 @@
 		class={cn(buttonVariants({ variant: 'postkarteCta' }), 'w-full text-lg sm:w-auto')}
 	>
 		Als Postkarte versenden
-		<Mail class=" h-6 w-6" />
+		<Mail class="h-6 w-6" />
 	</DrawerTrigger>
-	<DrawerContent>
-		<div class="mx-auto w-full md:w-1/2 xl:w-1/3">
+	<DrawerContent class="max-h-[96%]">
+		<div class="mx-auto w-full overflow-auto md:w-1/2 xl:w-1/3">
 			<DrawerHeader>
 				<DrawerTitle class="text-center text-xl">Text als Postkarte versenden</DrawerTitle>
 			</DrawerHeader>

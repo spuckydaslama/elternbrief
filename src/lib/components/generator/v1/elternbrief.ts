@@ -49,5 +49,6 @@ export const toSharableText = (elternbrief: Elternbrief): string => {
 			}
 			return '\n';
 		})
-		.join('');
+		.join('')
+		.trim();
 };
