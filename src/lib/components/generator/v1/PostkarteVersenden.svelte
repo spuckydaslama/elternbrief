@@ -7,14 +7,7 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Input } from '$lib/components/ui/input';
 	import { elternBriefGlobalState } from '../../../ElternbriefGlobalState.svelte';
-	import {
-		Dialog,
-		DialogContent,
-		DialogTrigger,
-		DialogFooter,
-		DialogHeader,
-		DialogTitle
-	} from '$lib/components/ui/dialog';
+	import { Dialog, DialogContent, DialogTrigger, DialogFooter } from '$lib/components/ui/dialog';
 
 	let empfaenger: string = $state('');
 	let zusatz: string = $state('');
