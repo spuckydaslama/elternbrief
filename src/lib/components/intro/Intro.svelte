@@ -11,7 +11,7 @@
 	</picture>
 </div>
 <h1 class="mb-4 text-center text-4xl">Stimme für Kinder</h1>
-<h2 class="mb-4 text-center text-2xl">Gebt den kommenden Generationen eure Stimmen</h2>
+<h2 class="mb-4 text-center text-2xl">Sammelt die Stimmen für die jungen Generationen - sendet Postkarten</h2>
 <section class="mx-2 my-2 grid grid-cols-1 gap-2 md:mx-8 md:grid-cols-2 xl:grid-cols-4">
 	<QuestionCard title="Warum?">
 		<p>
