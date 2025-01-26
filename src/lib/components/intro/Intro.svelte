@@ -27,10 +27,6 @@
 				<span class="italic">Schicke Postkarten</span> an Großeltern, Tanten/Onkel, Freunde oder auch
 				deine Eltern. Und ja, du darfst mehrmals senden!
 			</p>
-			<p>
-				<span class="italic">Eine Kampagne der Grünen?</span> Ja, wir machen diese Aktion, um Stimmen
-				für die Grünen zu sammeln. Der Postkartentext kann aber auch neutral gestaltet werden.
-			</p>
 		</div>
 	</QuestionCard>
 	<QuestionCard title="Wer?">

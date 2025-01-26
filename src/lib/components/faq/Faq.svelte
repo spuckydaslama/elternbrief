@@ -58,6 +58,14 @@
 				Formulierungen, Kooperationen oder was man eben braucht. Schreibt einfach!
 			</p>
 		</FaqQuestionAndAnswer>
+
+		<FaqQuestionAndAnswer question="Eine Kampagne der Grünen?">
+			<p>
+				Ja, wir machen diese Aktion, um Stimmen für die Grünen zu sammeln. Der Postkartentext kann
+				aber auch neutral gestaltet werden.
+			</p>
+		</FaqQuestionAndAnswer>
+
 		<FaqQuestionAndAnswer question="Wie kann ich helfen?">
 			<ol class="ml-2 list-inside list-decimal">
 				<li>Weitersagen und mehr Menschen davon überzeugen, zur Wahl aktiv zu werden.</li>
