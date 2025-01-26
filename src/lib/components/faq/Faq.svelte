@@ -77,13 +77,5 @@
 				>.
 			</p>
 		</FaqQuestionAndAnswer>
-		<FaqQuestionAndAnswer question="Gibt es noch andere Wege den Kindern eine Stimme zu geben?">
-			<ul class="ml-2 list-inside list-disc">
-				<li>
-					<ExternalLink href="https://wir-stimmen-zusammen.de/">Wir stimmen zusammen</ExternalLink> -
-					Viele Argumentationen und anderes Material
-				</li>
-			</ul>
-		</FaqQuestionAndAnswer>
 	</Accordion>
 </div>
