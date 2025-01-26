@@ -86,7 +86,7 @@
 			</div>
 			<div class="space-y-1">
 				<Label class="flex items-center gap-1 text-indigo-600">
-					Sorge der Älteren <span class="flex items-center text-xs text-indigo-400">
+					Sorgen der Älteren <span class="flex items-center text-xs text-indigo-400">
 						<BadgeInfoIcon class="inline size-4" /> (Wähle die passendsten)
 					</span>
 				</Label>
@@ -125,7 +125,7 @@
 			</div>
 			<div class="space-y-1">
 				<Label class="flex items-center gap-1 text-indigo-600">
-					Sorge der Jüngeren <span class="flex items-center text-xs text-indigo-400">
+					Sorgen der Jüngeren <span class="flex items-center text-xs text-indigo-400">
 						<BadgeInfoIcon class="inline size-4" /> (Wähle die passendsten)
 					</span>
 				</Label>
