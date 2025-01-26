@@ -62,7 +62,9 @@
 		Als Postkarte versenden
 		<Mail class="h-6 w-6" />
 	</DialogTrigger>
-	<DialogContent class="h-dvh w-full content-center overflow-auto text-base sm:h-auto sm:max-w-lg">
+	<DialogContent
+		class="h-dvh w-full content-center gap-6 overflow-auto text-base sm:h-auto sm:max-w-lg"
+	>
 		<div class="flex items-center justify-center">
 			<form bind:this={form} class="mt-3 flex w-full flex-col items-stretch gap-4">
 				<div class="space-y-1">
@@ -91,19 +93,29 @@
 				</div>
 			</form>
 		</div>
-		<Button
-			variant="postkarteCta"
-			size="lg"
-			class={cn('group text-base sm:text-lg', isSending && 'pointer-events-none animate-pulse')}
-			onclick={handleSubmit}
-		>
-			{#if isSending}
-				Wird versendet <Loader class="animate-spin" />
-			{:else}
-				Postkarte versenden <Send
-					class={cn(filledOut && 'animate-bounce group-hover:animate-none')}
-				/>
-			{/if}
-		</Button>
+		<div class="flex flex-col gap-2">
+			<Button
+				variant="postkarteCta"
+				size="lg"
+				class={cn('group text-base sm:text-lg', isSending && 'pointer-events-none animate-pulse')}
+				onclick={handleSubmit}
+			>
+				{#if isSending}
+					Wird versendet <Loader class="animate-spin" />
+				{:else}
+					Postkarte versenden <Send
+						class={cn(filledOut && 'animate-bounce group-hover:animate-none')}
+					/>
+				{/if}
+			</Button>
+			<Button
+				variant="secondary"
+				size="lg"
+				class="text-base sm:text-lg"
+				onclick={() => (open = false)}
+			>
+				Abbrechen
+			</Button>
+		</div>
 	</DialogContent>
 </Dialog>
