@@ -27,7 +27,10 @@
 			<p>Wir schreiben Postkarten an Großeltern, Familie und Freunde.</p>
 			<p>
 				<a
-					class={cn('w-full sm:w-auto lg:hidden', buttonVariants({ variant: 'postkarteCta' }))}
+					class={cn(
+						buttonVariants({ variant: 'postkarteCta' }),
+						'w-full sm:w-auto sm:text-base lg:hidden'
+					)}
 					href="#jetzt-postkarte-schreiben"
 				>
 					Jetzt direkt "Postkarte schreiben" <CornerRightDown />
