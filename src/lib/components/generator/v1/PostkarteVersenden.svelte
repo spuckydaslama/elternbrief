@@ -29,11 +29,11 @@
 		if (empfaenger && strasse_hausnummer && plz_ort) {
 			const payload = {
 				text: elternBriefGlobalState.elternbriefText,
-				adressline1: empfaenger.trim(),
-				adressline2: zusatz.trim(),
-				adressline3: strasse_hausnummer.trim(),
-				adressline4: plz_ort.trim(),
-				adressline5: 'Deutschland',
+				addressline1: empfaenger.trim(),
+				addressline2: zusatz.trim(),
+				addressline3: strasse_hausnummer.trim(),
+				addressline4: plz_ort.trim(),
+				addressline5: 'Deutschland',
 				created: new Date().toISOString()
 			};
 			try {
