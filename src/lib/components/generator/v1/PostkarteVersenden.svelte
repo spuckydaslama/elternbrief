@@ -69,7 +69,7 @@
 		<Mail class="h-6 w-6" />
 	</DialogTrigger>
 	<DialogContent
-		class="h-dvh w-full content-center gap-6 overflow-auto text-base sm:h-auto sm:max-w-lg"
+		class="h-dvh w-full content-start gap-6 overflow-auto text-base sm:h-auto sm:max-w-lg"
 	>
 		<div class="flex items-center justify-center">
 			<form bind:this={form} class="mt-3 flex w-full flex-col items-stretch gap-4">
