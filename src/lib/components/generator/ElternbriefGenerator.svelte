@@ -58,6 +58,7 @@
 		});
 		elternBriefGlobalState.elternbriefText = toSharableText(elternbrief);
 	});
+	let editableElternbriefIsValid = $state(true);
 </script>
 
 <section
@@ -193,7 +194,7 @@
 			Der Text der Postkarte <NativeShareOrCopyElternbrief />
 		</h2>
 		<div class="p-1.5">
-			<EditableElternbrief />
+			<EditableElternbrief onValidChanged={(isValid) => (editableElternbriefIsValid = isValid)} />
 		</div>
 		<div class="mt-4 space-y-2">
 			<p class="text-indigo-400">
@@ -201,7 +202,7 @@
 				Mit dem Klick auf 'Als Postkarte versenden' (Absenden des Textes) wirst du aufgefordert, die
 				Empfängeradresse einzugeben. Die Postkarte wird dann in den nächsten Tagen verschickt.
 			</p>
-			<PostkarteVersenden />
+			<PostkarteVersenden disabled={!editableElternbriefIsValid} />
 		</div>
 	</div>
 </section>

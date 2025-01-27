@@ -9,6 +9,11 @@
 	import { elternBriefGlobalState } from '../../../ElternbriefGlobalState.svelte';
 	import { Dialog, DialogContent, DialogTrigger } from '$lib/components/ui/dialog';
 
+	type Props = {
+		disabled: boolean;
+	};
+	const { disabled }: Props = $props();
+
 	let empfaenger: string = $state('');
 	let zusatz: string = $state('');
 	let strasse_hausnummer: string = $state('');
@@ -57,6 +62,7 @@
 
 <Dialog bind:open>
 	<DialogTrigger
+		{disabled}
 		class={cn(buttonVariants({ variant: 'postkarteCta' }), 'w-full text-lg sm:w-auto')}
 	>
 		Als Postkarte versenden
