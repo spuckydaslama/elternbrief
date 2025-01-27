@@ -29,10 +29,10 @@
 		if (empfaenger && strasse_hausnummer && plz_ort) {
 			const payload = {
 				text: elternBriefGlobalState.elternbriefText,
-				adressline1: empfaenger,
-				adressline2: zusatz,
-				adressline3: strasse_hausnummer,
-				adressline4: plz_ort,
+				adressline1: empfaenger.trim(),
+				adressline2: zusatz.trim(),
+				adressline3: strasse_hausnummer.trim(),
+				adressline4: plz_ort.trim(),
 				adressline5: 'Deutschland'
 			};
 			try {
