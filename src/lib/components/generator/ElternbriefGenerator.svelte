@@ -64,7 +64,7 @@
 <section
 	class="mx-2 my-2 grid max-w-full grid-cols-1 gap-4 p-1.5 md:mx-8 md:grid-cols-2 lg:grid-cols-3"
 >
-	<div>
+	<div id="jetzt-postkarte-schreiben">
 		<h2 class="mb-4 mt-4 text-2xl">Textbausteine für deine Postkarte</h2>
 		<form class="flex flex-col gap-4">
 			<div class="space-y-1">

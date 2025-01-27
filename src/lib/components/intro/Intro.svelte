@@ -2,6 +2,9 @@
 
 <script lang="ts">
 	import QuestionCard from '$lib/components/intro/QuestionCard.svelte';
+	import { cn } from '$lib/utils';
+	import { buttonVariants } from '$lib/components/ui/button';
+	import { CornerRightDown } from 'lucide-svelte';
 </script>
 
 <div class="flex justify-center">
@@ -16,10 +19,21 @@
 </h2>
 <section class="mx-2 my-2 grid grid-cols-1 gap-2 md:mx-8 md:grid-cols-2 xl:grid-cols-4">
 	<QuestionCard title="Warum?">
-		<p>
-			Die Zukunft steht bevor, Kinder und Jugendliche haben wenig Einfluss darauf. Wir wollen ihnen
-			eine Stimme verleihen.
-		</p>
+		<div class="flex flex-col gap-2">
+			<p>
+				Die Zukunft steht bevor, Kinder und Jugendliche haben wenig Einfluss darauf. Wir wollen
+				ihnen eine Stimme verleihen.
+			</p>
+			<p>Wir schreiben Postkarten an Großeltern, Familie und Freunde.</p>
+			<p>
+				<a
+					class={cn('w-full sm:w-auto lg:hidden', buttonVariants({ variant: 'postkarteCta' }))}
+					href="#jetzt-postkarte-schreiben"
+				>
+					Jetzt direkt "Postkarte schreiben" <CornerRightDown />
+				</a>
+			</p>
+		</div>
 	</QuestionCard>
 	<QuestionCard title="Was?">
 		<div class="flex flex-col gap-2">
