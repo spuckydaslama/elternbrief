@@ -28,14 +28,12 @@
 		form.reportValidity();
 		if (empfaenger && strasse_hausnummer && plz_ort) {
 			const payload = {
-				grusstext: elternBriefGlobalState.elternbriefText,
-				adresse: {
-					adresszeile1: empfaenger,
-					adresszeile2: zusatz,
-					adresszeile3: strasse_hausnummer,
-					adresszeile4: plz_ort,
-					adresszeile5: 'Deutschland'
-				}
+				text: elternBriefGlobalState.elternbriefText,
+				adressline1: empfaenger,
+				adressline2: zusatz,
+				adressline3: strasse_hausnummer,
+				adressline4: plz_ort,
+				adressline5: 'Deutschland'
 			};
 			try {
 				isSending = true;
