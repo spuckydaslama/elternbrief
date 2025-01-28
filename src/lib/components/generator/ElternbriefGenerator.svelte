@@ -40,7 +40,7 @@
 		'Die Grünen haben da gute Konzepte und setzen sich für eine lebenswerte Zukunft aller Generationen ein.'
 	);
 
-	let ps = $state('Deine Stimme ist ein kostbares Geschenk für unsere Zukunft!');
+	let ps = $state('Vielleicht kannst du deine Stimme für uns alle bei der Wahl einsetzen?');
 	let abschied = $state('Deine Absender:in');
 
 	$effect.pre(() => {
