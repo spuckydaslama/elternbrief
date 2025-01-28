@@ -20,8 +20,8 @@ export const load: PageLoad = () => {
 				lang: 'Ukraine-Krieg'
 			},
 			{
-				kurz: 'Wohnen-Miete',
-				lang: 'Wohnen-Miete'
+				kurz: 'Wohnen&Miete',
+				lang: 'Wohnen&Miete'
 			},
 			{
 				kurz: 'Rente',
