@@ -49,6 +49,10 @@
 	<QuestionCard title="Wer?">
 		<div class="flex flex-col gap-2">
 			<p>
+				<span class="italic">Du willst etwas für deine Kinder tun?</span> Dann stelle dir unten deinen
+				Postkartentext zusammen. Personalisiere mit Namen und passe den Text vor dem Abschicken an.
+			</p>
+			<p>
 				<span class="italic">Du hast keine Kinder?</span> Oder willst diese aus anderen Gründen nicht
 				im Text der Karte erwähnen? Kein Problem, du kannst es so gestalten, dass du selbst als Absender:in
 				der Botschaft auftrittst.
