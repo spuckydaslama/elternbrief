@@ -31,7 +31,7 @@
 				Nein. Für dich ist der Versand kostenlos. Wir prüfen den Inhalt er erstellten Karten und
 				geben diese i.d.R. frei für den Versand. Wer noch mehr Stimmen für Kinder als Postkarte
 				ermöglichen will, unterstützt uns mit einer
-				<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">Spende</ExternalLink>!
+				<ExternalLink href="https://www.paypal.com/pool/9bKpL5YodE?sr=wccr">Spende</ExternalLink>!
 			</p>
 		</FaqQuestionAndAnswer>
 
@@ -58,12 +58,20 @@
 				Formulierungen, Kooperationen oder was man eben braucht. Schreibt einfach!
 			</p>
 		</FaqQuestionAndAnswer>
+
+		<FaqQuestionAndAnswer question="Eine Kampagne der Grünen?">
+			<p>
+				Ja, wir machen diese Aktion, um Stimmen für die Grünen zu sammeln. Der Postkartentext kann
+				aber auch neutral gestaltet werden.
+			</p>
+		</FaqQuestionAndAnswer>
+
 		<FaqQuestionAndAnswer question="Wie kann ich helfen?">
 			<ol class="ml-2 list-inside list-decimal">
 				<li>Weitersagen und mehr Menschen davon überzeugen, zur Wahl aktiv zu werden.</li>
 				<li>
-					<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">Spenden</ExternalLink> und ermöglichen,
-					dass mehr Karten verschickt werden!
+					<ExternalLink href="https://www.paypal.com/pool/9bKpL5YodE?sr=wccr">Spenden</ExternalLink>
+					und ermöglichen, dass mehr Karten verschickt werden!
 				</li>
 			</ol>
 		</FaqQuestionAndAnswer>
@@ -72,18 +80,10 @@
 				Egal ob du selbst eine Postkarte schickst oder auch nicht, mit jedem kleinen Betrag haben
 				noch mehr Menschen die Chance andere auf die Stimme für Kinder hinzuweisen. Am schnellsten
 				über
-				<ExternalLink href="https://paypal.me/pools/c/8MfhlQJUVP">
+				<ExternalLink href="https://www.paypal.com/pool/9bKpL5YodE?sr=wccr">
 					Paypal und unsere Spendenaktion</ExternalLink
 				>.
 			</p>
-		</FaqQuestionAndAnswer>
-		<FaqQuestionAndAnswer question="Gibt es noch andere Wege den Kindern eine Stimme zu geben?">
-			<ul class="ml-2 list-inside list-disc">
-				<li>
-					<ExternalLink href="https://wir-stimmen-zusammen.de/">Wir stimmen zusammen</ExternalLink> -
-					Viele Argumentationen und anderes Material
-				</li>
-			</ul>
 		</FaqQuestionAndAnswer>
 	</Accordion>
 </div>

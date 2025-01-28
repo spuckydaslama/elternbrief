@@ -1,10 +1,14 @@
 export type ElternbriefInput = {
 	anrede: string;
+	einleitung: string;
 	ersterSatz: string;
-	grund: string;
-	schlussworte: string;
-	abschied: string;
+	sorgenDerAelteren: Set<string>;
+	customSorgeDerAelteren: string;
+	sorgenDerJuengeren: Set<string>;
+	customSorgeDerJuengeren: string;
+	gruenerHinweis: string;
 	ps: string;
+	abschied: string;
 };
 
 export class BriefNewline {}

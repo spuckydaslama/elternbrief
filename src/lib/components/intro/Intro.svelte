@@ -2,6 +2,9 @@
 
 <script lang="ts">
 	import QuestionCard from '$lib/components/intro/QuestionCard.svelte';
+	import { cn } from '$lib/utils';
+	import { buttonVariants } from '$lib/components/ui/button';
+	import { CornerRightDown } from 'lucide-svelte';
 </script>
 
 <div class="flex justify-center">
@@ -11,13 +14,26 @@
 	</picture>
 </div>
 <h1 class="mb-4 text-center text-4xl">Stimme für Kinder</h1>
-<h2 class="mb-4 text-center text-2xl">Gebt den kommenden Generationen eure Stimmen</h2>
+<h2 class="mb-4 text-center text-2xl">
+	Sammelt die Stimmen für die jungen Generationen - sendet Postkarten
+</h2>
 <section class="mx-2 my-2 grid grid-cols-1 gap-2 md:mx-8 md:grid-cols-2 xl:grid-cols-4">
 	<QuestionCard title="Warum?">
-		<p>
-			Die Zukunft steht bevor, Kinder und Jugendliche haben wenig Einfluss darauf. Wir wollen ihnen
-			eine Stimme verleihen.
-		</p>
+		<div class="flex flex-col gap-2">
+			<p>
+				Die Zukunft steht bevor, Kinder und Jugendliche haben wenig Einfluss darauf. Wir wollen
+				ihnen eine Stimme verleihen.
+			</p>
+			<p>Wir schreiben Postkarten an Großeltern, Familie und Freunde.</p>
+			<p>
+				<a
+					class={cn(buttonVariants({ variant: 'postkarteCta' }), 'w-full sm:w-auto sm:text-base')}
+					href="#jetzt-postkarte-schreiben"
+				>
+					Jetzt direkt "Postkarte schreiben" <CornerRightDown />
+				</a>
+			</p>
+		</div>
 	</QuestionCard>
 	<QuestionCard title="Was?">
 		<div class="flex flex-col gap-2">
@@ -25,14 +41,14 @@
 				<span class="italic">Schicke Postkarten</span> an Großeltern, Tanten/Onkel, Freunde oder auch
 				deine Eltern. Und ja, du darfst mehrmals senden!
 			</p>
-			<p>
-				<span class="italic">Eine Kampagne der Grünen?</span> Ja, wir machen diese Aktion, um Stimmen
-				für die Grünen zu sammeln. Der Postkartentext kann aber auch neutral gestaltet werden.
-			</p>
 		</div>
 	</QuestionCard>
 	<QuestionCard title="Wer?">
 		<div class="flex flex-col gap-2">
+			<p>
+				<span class="italic">Du willst etwas für deine Kinder tun?</span> Dann stelle dir unten deinen
+				Postkartentext zusammen. Personalisiere mit Namen und passe den Text vor dem Abschicken an.
+			</p>
 			<p>
 				<span class="italic">Du hast keine Kinder?</span> Oder willst diese aus anderen Gründen nicht
 				im Text der Karte erwähnen? Kein Problem, du kannst es so gestalten, dass du selbst als Absender:in

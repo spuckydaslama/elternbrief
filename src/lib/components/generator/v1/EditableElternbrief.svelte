@@ -3,8 +3,14 @@
 <script lang="ts">
 	import { blur } from 'svelte/transition';
 	import { elternBriefGlobalState } from '$lib/ElternbriefGlobalState.svelte.js';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { Label } from '$lib/components/ui/label';
+	import { cn } from '$lib/utils';
+	import { BadgeInfoIcon } from 'lucide-svelte';
+
+	type Props = {
+		onValidChanged: (newValid: boolean) => void;
+	};
+
+	const { onValidChanged }: Props = $props();
 
 	let showChanged: boolean = $state(false);
 	$effect(() => {
@@ -17,29 +23,50 @@
 		}
 	});
 
-	const maxZeichen = 650;
-	let zeichenUebrig = $derived(
-		maxZeichen - elternBriefGlobalState.elternbriefText.replace(/[\n\r]/g, '').length
+	const maxZeichen = 900;
+	let anzahlZeichen = $derived(
+		elternBriefGlobalState.elternbriefText.replace(/[\n\r]/g, '').length
 	);
+	let zeichenUebrig = $derived(maxZeichen - anzahlZeichen);
+	let zeichenUebrigText = $derived.by(() => {
+		if (zeichenUebrig > 0) {
+			return `Noch ${zeichenUebrig} von maximal ${maxZeichen} Zeichen übrig`;
+		} else {
+			return `Zuviele Zeichen: ${anzahlZeichen} (maximal ${maxZeichen} Zeichen)`;
+		}
+	});
+	let zeichenUebrigColor = $derived.by(() => {
+		if (anzahlZeichen <= 750) {
+			return 'text-muted-foreground';
+		} else if (anzahlZeichen <= 850) {
+			return 'text-yellow-600';
+		} else {
+			return 'text-destructive';
+		}
+	});
+	let isValid = $derived(anzahlZeichen <= maxZeichen);
+	$effect(() => {
+		onValidChanged(isValid);
+	});
 </script>
 
-<div>
-	{#if zeichenUebrig >= 0}
-		<Label class="flex-1 text-indigo-600">
-			Noch {zeichenUebrig} von maximal {maxZeichen} Zeichen übrig
-		</Label>
-	{:else}
-		<Label class="flex-1 text-red-600">
-			Zuviele Zeichen: {maxZeichen - zeichenUebrig} von maximal {maxZeichen} Zeichen
-		</Label>
-	{/if}
+<div class="space-y-1">
+	<p class="text-indigo-400">
+		<BadgeInfoIcon class="inline size-6" /> Hier siehst du den finalen Text für die Karte wie er dann
+		an deinen Empfänger verschickt wird. Lies aufmerksam und ändere nach deinen Wünschen. Die Zeichenanzahl
+		ist ein Richtwert. Der Text wird automatisch auf der Postkarte eingefügt, wenn es weniger Zeichen
+		sind, wird der Text größer. dargestellt.
+	</p>
+	<div class={cn(zeichenUebrigColor, 'text-sm')}>
+		{zeichenUebrigText}
+	</div>
 	<div class="relative">
-		<Textarea
+		<div
 			aria-label="Elternbrieftext"
-			class="w-full"
-			rows={12}
-			bind:value={elternBriefGlobalState.elternbriefText}
-		/>
+			class="h-full w-full rounded-md border border-input p-2 shadow-lg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+			contenteditable="plaintext-only"
+			bind:textContent={elternBriefGlobalState.elternbriefText}
+		></div>
 		{#if showChanged}
 			<svg
 				transition:blur
@@ -58,4 +85,7 @@
 			</svg>
 		{/if}
 	</div>
+	{#if !isValid}
+		<div class="text-destructive">{zeichenUebrigText}</div>
+	{/if}
 </div>

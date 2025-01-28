@@ -13,6 +13,6 @@
 </script>
 
 <AccordionItem>
-	<AccordionTrigger><h3 class="text-xl">{question}</h3></AccordionTrigger>
+	<AccordionTrigger class="text-left"><h3 class="text-xl">{question}</h3></AccordionTrigger>
 	<AccordionContent>{@render children?.()}</AccordionContent>
 </AccordionItem>

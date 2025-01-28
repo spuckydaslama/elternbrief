@@ -29,6 +29,14 @@ const config: Config = {
 					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
 					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)'
 				},
+				postkarteCta: {
+					DEFAULT: 'hsl(var(--postkarte-cta) / <alpha-value>)',
+					foreground: 'hsl(var(--postkarte-cta-foreground) / <alpha-value>)'
+				},
+				postkarteSecondary: {
+					DEFAULT: 'hsl(var(--postkarte-secondary) / <alpha-value>)',
+					foreground: 'hsl(var(--postkarte-secondary-foreground) / <alpha-value>)'
+				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
 					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)'
