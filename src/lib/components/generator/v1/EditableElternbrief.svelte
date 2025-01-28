@@ -4,6 +4,7 @@
 	import { blur } from 'svelte/transition';
 	import { elternBriefGlobalState } from '$lib/ElternbriefGlobalState.svelte.js';
 	import { cn } from '$lib/utils';
+	import { BadgeInfoIcon } from 'lucide-svelte';
 
 	type Props = {
 		onValidChanged: (newValid: boolean) => void;
@@ -50,13 +51,19 @@
 </script>
 
 <div class="space-y-1">
-	<div class={cn(zeichenUebrigColor)}>
+	<p class="text-indigo-400">
+		<BadgeInfoIcon class="inline size-6" /> Hier siehst du den finalen Text für die Karte wie er dann
+		an deinen Empfänger verschickt wird. Lies aufmerksam und ändere nach deinen Wünschen. Die Zeichenanzahl
+		ist ein Richtwert. Der Text wird automatisch auf der Postkarte eingefügt, wenn es weniger Zeichen
+		sind, wird der Text größer. dargestellt.
+	</p>
+	<div class={cn(zeichenUebrigColor, 'text-sm')}>
 		{zeichenUebrigText}
 	</div>
 	<div class="relative">
 		<div
 			aria-label="Elternbrieftext"
-			class="h-full w-full rounded-md border border-input p-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+			class="h-full w-full rounded-md border border-input p-2 shadow-lg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 			contenteditable="plaintext-only"
 			bind:textContent={elternBriefGlobalState.elternbriefText}
 		></div>

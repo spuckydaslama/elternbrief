@@ -190,9 +190,7 @@
 		</form>
 	</div>
 	<div class="lg:col-span-2">
-		<h2 class="mb-2 mt-4 flex items-center gap-2 text-2xl">
-			Der Text der Postkarte <NativeShareOrCopyElternbrief />
-		</h2>
+		<h2 class="mb-2 mt-4 flex items-center gap-2 text-2xl">Der Text der Postkarte</h2>
 		<div class="p-1.5">
 			<EditableElternbrief onValidChanged={(isValid) => (editableElternbriefIsValid = isValid)} />
 		</div>
@@ -202,7 +200,10 @@
 				Mit dem Klick auf 'Als Postkarte versenden' (Absenden des Textes) wirst du aufgefordert, die
 				Empfängeradresse einzugeben. Die Postkarte wird dann in den nächsten Tagen verschickt.
 			</p>
-			<PostkarteVersenden disabled={!editableElternbriefIsValid} />
+			<div class="flex flex-wrap items-center gap-2">
+				<PostkarteVersenden disabled={!editableElternbriefIsValid} />
+				<NativeShareOrCopyElternbrief />
+			</div>
 		</div>
 	</div>
 </section>
