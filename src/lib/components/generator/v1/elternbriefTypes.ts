@@ -7,7 +7,6 @@ export type ElternbriefInput = {
 	sorgenDerJuengeren: Set<string>;
 	customSorgeDerJuengeren: string;
 	gruenerHinweis: string;
-	ps: string;
 	abschied: string;
 };
 
