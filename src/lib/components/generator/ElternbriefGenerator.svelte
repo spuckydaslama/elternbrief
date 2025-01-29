@@ -12,6 +12,7 @@
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { cn } from '$lib/utils';
+	import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group';
 
 	interface Props {
 		sorgenDerAelteren: { kurz: string; lang: string }[];
@@ -19,11 +20,17 @@
 	}
 	const { sorgenDerAelteren, sorgenDerJuengeren }: Props = $props();
 
+	type Perspektive = 'erwachsener' | 'kind';
+
 	let anrede = $state('Liebe <Empfänger:in>,');
 	let einleitung = $state('hier schreibt Absender:in.');
-	const ersterSatz =
-		'Vielleicht wunderst du dich, dass ich dir schreibe. Ich habe ein wichtiges Anliegen: Ich wünsche mir so sehr, dass du wählen gehst. Ich mache mir Sorgen um unsere Zukunft.\n' +
-		'Am schlimmsten finde ich es, dass ausgerechnet die junge Generation nicht wählen kann, sie sind doch diejenigen, die am längsten mit den Folgen der Wahl leben müssen.';
+	let perspektive = $state<Perspektive>('kind');
+	let ersterSatz = $derived.by(() => {
+		if (perspektive === 'kind') {
+			return 'Wir jungen Menschen dürfen größtenteils noch nicht wählen, aber ihr könnt das! Und das finden wir richtig wichtig, weil die Wahl entscheidet, wie unsere Zukunft aussieht. Dabei müssen wir am längsten mit den Folgen leben. Vielleicht kannst du deine Stimme für uns alle bei der Wahl einsetzen?';
+		}
+		return 'Ich habe ein wichtiges Anliegen: Ich wünsche mir so sehr, dass du wählen gehst. Ich mache mir Sorgen um unsere Zukunft. Am schlimmsten finde ich es, dass ausgerechnet die junge Generation nicht wählen kann, sie sind doch diejenigen, die am längsten mit den Folgen der Wahl leben müssen. Vielleicht kannst du deine Stimme für uns alle bei der Wahl einsetzen?';
+	});
 	let selectedSorgenDerAelteren = $state<Set<string>>(new SvelteSet([sorgenDerAelteren[0].lang]));
 	let customSorgeDerAelteren = $state('');
 	let missingSorgenDerAelteren = $derived(
@@ -40,8 +47,7 @@
 		'Die Grünen haben da gute Konzepte und setzen sich für eine lebenswerte Zukunft aller Generationen ein.'
 	);
 
-	let ps = $state('Vielleicht kannst du deine Stimme für uns alle bei der Wahl einsetzen?');
-	let abschied = $state('Deine Absender:in');
+	let abschied = $state('Dein(e) (Name/Enkel(in)/Tochter/Sohn/…)');
 
 	$effect.pre(() => {
 		const elternbrief = createElternbrief({
@@ -53,8 +59,7 @@
 			sorgenDerJuengeren: selectedSorgenDerJuengeren,
 			customSorgeDerJuengeren,
 			gruenerHinweis: gruenerHinweisChecked ? gruenerHinweis : '',
-			abschied,
-			ps
+			abschied
 		});
 		elternBriefGlobalState.elternbriefText = toSharableText(elternbrief);
 	});
@@ -84,6 +89,19 @@
 					name="einleitung"
 					bind:value={einleitung}
 				/>
+			</div>
+			<div class="space-y-1">
+				<p class="flex items-center gap-1 text-indigo-600">Text geschrieben von ...</p>
+				<RadioGroup bind:value={perspektive} class="flex gap-4">
+					<div class="flex items-center space-x-2">
+						<RadioGroupItem value="kind" id="kind" />
+						<Label for="kind">Kindern</Label>
+					</div>
+					<div class="flex items-center space-x-2">
+						<RadioGroupItem value="erwachsener" id="erwachsener" />
+						<Label for="erwachsener">Erwachsenen</Label>
+					</div>
+				</RadioGroup>
 			</div>
 			<div class="space-y-1">
 				<Label class="flex items-center gap-1 text-indigo-600">

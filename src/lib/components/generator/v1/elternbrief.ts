@@ -19,9 +19,7 @@ export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 	if (sorgenDerAelteren || sorgenDerJuengeren) {
 		const sorgenTextElements = [
 			sorgenDerAelteren &&
-				`Themen wie ${sorgenDerAelteren
-					.join(', ')
-					.replace(/, ([^,]*)$/, ' und $1')} sind für euch wichtig.`,
+				`Themen wie ${sorgenDerAelteren.join(', ').replace(/, ([^,]*)$/, ' und $1')} sind für euch wichtig.`,
 			sorgenDerJuengeren &&
 				`${sorgenDerJuengeren
 					.join(', ')
@@ -36,7 +34,6 @@ export const createElternbrief = (userInput: ElternbriefInput): Elternbrief => {
 		elternbrief.push(new BriefParagraph(userInput.gruenerHinweis.trim()));
 	}
 	elternbrief.push(new BriefNewline());
-	elternbrief.push(new BriefParagraph(userInput.ps.trim()));
 	elternbrief.push(new BriefParagraph(userInput.abschied.trim()));
 	return elternbrief;
 };
