@@ -21,8 +21,8 @@
 	<QuestionCard title="Warum?">
 		<div class="flex flex-col gap-2">
 			<p>
-				Die Zukunft steht bevor, Kinder und Jugendliche haben wenig Einfluss darauf. Wir wollen
-				ihnen eine Stimme verleihen.
+				Die Zukunft steht bevor, Kinder und Jugendliche haben wenig Einfluss darauf. Zur Wahl wollen
+				wir ihnen eine Stimme verleihen.
 			</p>
 			<p>Wir schreiben Postkarten an Großeltern, Familie und Freunde.</p>
 			<p>
