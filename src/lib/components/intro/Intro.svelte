@@ -5,6 +5,7 @@
 	import { cn } from '$lib/utils';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { CornerRightDown } from 'lucide-svelte';
+	import ExampleCard from '$lib/components/intro/ExampleCard.svelte';
 </script>
 
 <div class="flex justify-center">
@@ -41,6 +42,7 @@
 				<span class="italic">Schicke Postkarten</span> an Großeltern, Tanten/Onkel, Freunde oder auch
 				deine Eltern. Und ja, du darfst mehrmals senden!
 			</p>
+			<ExampleCard />
 		</div>
 	</QuestionCard>
 	<QuestionCard title="Wer?">
